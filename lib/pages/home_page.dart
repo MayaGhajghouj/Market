@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mmarket_interfaces/constants/colors.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -8,8 +9,13 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text( 'Market'),
-        backgroundColor: Colors.pinkAccent,
+        title: Text(
+          'Market',
+          style: TextStyle(
+            fontFamily: '',
+          ),
+        ),
+        backgroundColor: Beige,
       ),
     );
   }
