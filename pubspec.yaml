@@ -64,6 +64,15 @@ flutter:
           - asset: assets/fonts/LeagueSpartan-Regular.ttf
           - asset: assets/fonts/LeagueSpartan-SemiBold.ttf
           - asset: assets/fonts/LeagueSpartan-Thin.ttf
+          - asset: assets/images/welcomepage.png
+          - asset: assets/images/list.png
+          - asset: assets/images/Living room.png
+          - asset: assets/images/Kitchen.png
+          - asset: assets/images/Dining Room.png
+          - asset: assets/images/Bedroom.png
+          - asset: assets/images/alejandrao_httpss.mj 1.png
+          - asset: assets/images/Rectangle 22 (1).png
+          - asset: assets/images/Rectangle 22.png
       - family: Poppins
         fonts:
           - asset: assets/fonts/Poppins-Bold.ttf
