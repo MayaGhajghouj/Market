@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mmarket_interfaces/pages/product_description.dart';
 
 import 'pages/home_page.dart';
 
@@ -18,7 +19,10 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:  HomePage(),
+      // routes: {
+      //   '/ProductDescription': (context)=>ProductDescription(),
+      // },
+      home:  ProductDescription(),
     );
   }
 }

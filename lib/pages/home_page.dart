@@ -12,7 +12,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(
+        title: const Text(
           'Dining Table',
           style: TextStyle(
             fontFamily: 'Poppins',
@@ -25,13 +25,13 @@ class HomePage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: salmon,
                 borderRadius: BorderRadius.all(
                   Radius.circular(20.0),),
               ),
 
-                child: Icon(
+                child: const Icon(
                     Icons.search,
                   size: 35,
 
@@ -66,12 +66,12 @@ class HomePage extends StatelessWidget {
                       textAlign: TextAlign.center,
                     ),
                 ),
-                SizedBox(width: 9,),
+                const SizedBox(width: 9,),
                 TextButton(
                   onPressed: (){
           
                   },
-                  child: const Text('Living room',
+                  child:  const Text(' Decorative Light',
                     style: TextStyle(
                       color: salmon,
                       fontFamily: 'League Spartan',
@@ -80,12 +80,12 @@ class HomePage extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                 ),
-                SizedBox(width: 9,),
+                const SizedBox(width: 9,),
                 TextButton(
                   onPressed: (){
           
                   },
-                  child: const Text('Living room',
+                  child:  const Text('Bed',
                     style: TextStyle(
                       color: salmon,
                       fontFamily: 'League Spartan',
@@ -97,7 +97,7 @@ class HomePage extends StatelessWidget {
               ],
               ),
               Row(
-           children: [
+             children: [
              ProductItem(
                PicPath:'assets/images/Topleft.png',
                Title: 'Deluxe table',
