@@ -3,7 +3,7 @@ import 'package:mmarket_interfaces/widgets/product_description_item.dart';
 
 import '../constants/colors.dart';
 
-class ProductDescription  extends StatelessWidget {
+class ProductDes_DiningTable  extends StatelessWidget {
 
 
   @override
