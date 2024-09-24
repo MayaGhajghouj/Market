@@ -17,7 +17,7 @@ appBar: AppBar(
 centerTitle: true,
 title:  Text(
 AppbarText,
-style: TextStyle(
+style: const TextStyle(
 fontFamily: 'Poppins',
 color: salmon,
 fontWeight: FontWeight.bold,
