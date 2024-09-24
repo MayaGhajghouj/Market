@@ -78,6 +78,7 @@ flutter:
           - asset: assets/images/sofatopleft.png
           - asset: assets/images/sofadownright.png
           - asset: assets/images/sofadownleft.png
+          - asset: assets/images/Profile_Picture.png
       - family: Poppins
         fonts:
           - asset: assets/fonts/Poppins-Bold.ttf
