@@ -73,6 +73,7 @@ flutter:
           - asset: assets/images/alejandrao_httpss.mj 1.png
           - asset: assets/images/Rectangle 22 (1).png
           - asset: assets/images/Rectangle 22.png
+          - asset: assets/images/sofa.png
       - family: Poppins
         fonts:
           - asset: assets/fonts/Poppins-Bold.ttf
