@@ -42,8 +42,10 @@ class ReviewPage extends StatelessWidget {
         padding: const EdgeInsets.all(30.0),
         child: SingleChildScrollView(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
+                margin: EdgeInsets.all(10.0),
                 color: Beige,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
@@ -102,6 +104,7 @@ class ReviewPage extends StatelessWidget {
                 ),
               ),
               Container(
+                margin: EdgeInsets.all(10.0),
                 color: Beige,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
@@ -121,7 +124,7 @@ class ReviewPage extends StatelessWidget {
                         maxLines:2,
                         overflow: TextOverflow.ellipsis,
                       ),
-          
+
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -160,6 +163,7 @@ class ReviewPage extends StatelessWidget {
                 ),
               ),
               Container(
+                margin: EdgeInsets.all(10.0),
                 color: Beige,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
@@ -179,7 +183,7 @@ class ReviewPage extends StatelessWidget {
                         maxLines:2,
                         overflow: TextOverflow.ellipsis,
                       ),
-          
+
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -218,6 +222,7 @@ class ReviewPage extends StatelessWidget {
                 ),
               ),
               Container(
+                margin: EdgeInsets.all(10.0),
                 color: Beige,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
@@ -237,7 +242,7 @@ class ReviewPage extends StatelessWidget {
                         maxLines:2,
                         overflow: TextOverflow.ellipsis,
                       ),
-          
+
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -276,6 +281,7 @@ class ReviewPage extends StatelessWidget {
                 ),
               ),
               Container(
+                margin: EdgeInsets.all(10.0),
                 color: Beige,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
@@ -295,7 +301,7 @@ class ReviewPage extends StatelessWidget {
                         maxLines:2,
                         overflow: TextOverflow.ellipsis,
                       ),
-          
+
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -334,6 +340,7 @@ class ReviewPage extends StatelessWidget {
                 ),
               ),
               Container(
+                margin: EdgeInsets.all(10.0),
                 color: Beige,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
@@ -353,65 +360,7 @@ class ReviewPage extends StatelessWidget {
                         maxLines:2,
                         overflow: TextOverflow.ellipsis,
                       ),
-          
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        IconButton(onPressed: (){},
-                          icon: Icon(
-                            Icons.star,
-                            size: 25,
-                            color: Terracotta,
-                          ),
-                        ),
-                        Text('5',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 13,
-                            fontFamily: 'League Spartan',
-                          ),
-                        ),
-                        IconButton(onPressed: (){},
-                          icon: Icon(
-                            Icons.remove_red_eye_rounded,
-                            size: 23,
-                            color: Terracotta,
-                          ),
-                        ),
-                        Text('654',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontFamily: 'League Spartan',
-                            fontSize: 13,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                color: Beige,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    const ListTile(
-                      tileColor: Beige,
-                      leading: CircleAvatar(
-                        backgroundImage: AssetImage('assets/images/Profile_Picture.png'),
-                      ),
-                      title: Text('Wade'),
-                      subtitle: Text('Lorem ipsum dolor sit'
-                          ' amet consectetur. Tortor aenean'
-                          ' suspendisse pretium nunc non facilisi.',
-                        style: TextStyle(
-                          fontFamily: 'League Spartan',
-                        ),
-                        maxLines:2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-          
+
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
