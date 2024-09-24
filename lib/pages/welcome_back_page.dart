@@ -72,7 +72,7 @@ class WelcomeBackPage extends StatelessWidget {
                     'assets/images/welcomepage.png',),
                 ),
               ),
-              SizedBox(height: 3.0,),
+              const SizedBox(height: 3.0,),
               Container(
                 width: double.infinity,
                 height: 4,
@@ -86,8 +86,8 @@ class WelcomeBackPage extends StatelessWidget {
                 ),
           
               ),
-              SizedBox(height: 3.0,),
-              Text('Categories',
+              const SizedBox(height: 3.0,),
+              const Text('Categories',
                 style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w600,
@@ -95,7 +95,7 @@ class WelcomeBackPage extends StatelessWidget {
                     fontFamily: 'Poppins'
                 ),
               ),
-              SizedBox(height: 3.0,),
+              const SizedBox(height: 3.0,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -153,8 +153,8 @@ class WelcomeBackPage extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 3.0,),
-              Text('best Seller',
+              const SizedBox(height: 3.0,),
+              const Text('best Seller',
                 style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w600,
@@ -162,7 +162,7 @@ class WelcomeBackPage extends StatelessWidget {
                     fontFamily: 'Poppins'
                 ),
               ),
-              SizedBox(height: 3.0,),
+              const SizedBox(height: 3.0,),
               Container( // container for picture
                 width: 349,
                 height: 132,
@@ -267,8 +267,8 @@ class WelcomeBackPage extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(height: 3.0,),
-              Text('New Collection',
+              const SizedBox(height: 3.0,),
+              const Text('New Collection',
                 style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w600,
@@ -276,7 +276,7 @@ class WelcomeBackPage extends StatelessWidget {
                     fontFamily: 'Poppins'
                 ),
               ),
-              SizedBox(height: 3.0,),
+              const SizedBox(height: 3.0,),
               Row(
                 children: [
                   Expanded(
