@@ -74,6 +74,10 @@ flutter:
           - asset: assets/images/Rectangle 22 (1).png
           - asset: assets/images/Rectangle 22.png
           - asset: assets/images/sofa.png
+          - asset: assets/images/sofatopright.png
+          - asset: assets/images/sofatopleft.png
+          - asset: assets/images/sofadownright.png
+          - asset: assets/images/sofadownleft.png
       - family: Poppins
         fonts:
           - asset: assets/fonts/Poppins-Bold.ttf

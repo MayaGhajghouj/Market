@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../constants/colors.dart';
 
-Widget ProductItem ({
+Widget ProductLIstItem ({
 required String PicPath ,//picture
 required String Title,// title
 required String Description,// short description

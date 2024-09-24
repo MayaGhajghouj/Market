@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:mmarket_interfaces/widgets/product_list_item.dart';
 
-import '../constants/colors.dart';
+import '../../constants/colors.dart';
 
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class DiningTableHomePage extends StatelessWidget {
+  const DiningTableHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -98,13 +98,13 @@ class HomePage extends StatelessWidget {
               ),
               Row(
              children: [
-             ProductItem(
+               ProductLIstItem(
                PicPath:'assets/images/Topleft.png',
                Title: 'Deluxe table',
                Description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
                Price: 420,
              ),
-             ProductItem(
+               ProductLIstItem(
                PicPath:'assets/images/Topright.png',
                Title: 'Modern table',
                Description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
@@ -114,13 +114,13 @@ class HomePage extends StatelessWidget {
             ),
               Row(
               children: [
-                ProductItem(
+                ProductLIstItem(
                   PicPath:'assets/images/Downleft.png',
                   Title: 'Modern Glass table',
                   Description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
                   Price: 220,
                 ),
-                ProductItem(
+                ProductLIstItem(
                   PicPath:'assets/images/Downright.png',
                   Title: 'Bohemian table',
                   Description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
@@ -130,13 +130,13 @@ class HomePage extends StatelessWidget {
             ),
             Row(
               children: [
-                ProductItem(
+                ProductLIstItem(
                   PicPath:'assets/images/Topleft.png',
                   Title: 'Deluxe table',
                   Description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
                   Price: 420,
                 ),
-                ProductItem(
+                ProductLIstItem(
                   PicPath:'assets/images/Topright.png',
                   Title: 'Modern table',
                   Description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
@@ -146,13 +146,13 @@ class HomePage extends StatelessWidget {
             ),
             Row(
               children: [
-                ProductItem(
+                ProductLIstItem(
                   PicPath:'assets/images/Downleft.png',
                   Title: 'Modern Glass table',
                   Description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
                   Price: 220,
                 ),
-                ProductItem(
+                ProductLIstItem(
                   PicPath:'assets/images/Downright.png',
                   Title: 'Bohemian table',
                   Description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
