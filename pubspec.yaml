@@ -79,6 +79,17 @@ flutter:
           - asset: assets/images/sofadownright.png
           - asset: assets/images/sofadownleft.png
           - asset: assets/images/Profile_Picture.png
+          - asset: assets/images/pp.png
+          - asset: assets/images/wishist.png
+          - asset: assets/images/profile.png
+          - asset: assets/images/myOrder.png
+          - asset: assets/images/line.png
+          - asset: assets/images/setting.png
+          - asset: assets/images/Privacy Policy.png
+          - asset: assets/images/Payment Methods.png
+          - asset: assets/images/notification.png
+          - asset: assets/images/help.png
+          - asset: assets/images/Logout.png
       - family: Poppins
         fonts:
           - asset: assets/fonts/Poppins-Bold.ttf
