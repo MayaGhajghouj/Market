@@ -35,7 +35,7 @@ Widget orderItem ({
       ),
       const Divider(
         color: salmon,
-        thickness: 2,
+        thickness: 1,
       ),
       Row(
         crossAxisAlignment: CrossAxisAlignment.start,

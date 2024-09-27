@@ -90,6 +90,10 @@ flutter:
           - asset: assets/images/notification.png
           - asset: assets/images/help.png
           - asset: assets/images/Logout.png
+          - asset: assets/images/order1.png
+          - asset: assets/images/order2.png
+          - asset: assets/images/order3.png
+          - asset: assets/images/order4.png
       - family: Poppins
         fonts:
           - asset: assets/fonts/Poppins-Bold.ttf

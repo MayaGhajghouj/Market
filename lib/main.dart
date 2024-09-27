@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mmarket_interfaces/pages/dining_room/product_description_DiningTable.dart';
+import 'package:mmarket_interfaces/pages/profile_pages/my_orders.dart';
 import 'package:mmarket_interfaces/pages/profile_pages/profile.dart';
 import 'package:mmarket_interfaces/pages/review_page.dart';
 import 'package:mmarket_interfaces/pages/welcome_back_page.dart';
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
       // routes: {
       //   '/ProductDescription': (context)=>ProductDescription(),
       // },
-      home:  EditProfile(),
+      home:  MyOrders(),
     );
   }
 }
