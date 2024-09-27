@@ -6,6 +6,7 @@ import 'package:mmarket_interfaces/pages/welcome_back_page.dart';
 import 'pages/dining_room/dining-table_home_page.dart';
 import 'pages/living_room/product_description_sofa.dart';
 import 'pages/living_room/sofa_home_page.dart';
+import 'pages/profile_pages/edit_profile.dart';
 import 'pages/sections_livingroom.dart';
 
 void main() {
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
       // routes: {
       //   '/ProductDescription': (context)=>ProductDescription(),
       // },
-      home:  Profile(),
+      home:  EditProfile(),
     );
   }
 }
