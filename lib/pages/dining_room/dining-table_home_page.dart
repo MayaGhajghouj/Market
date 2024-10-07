@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mmarket_interfaces/widgets/product_list_item.dart';
-
 import '../../constants/colors.dart';
+import '../../widgets_componants/product_list_item.dart';
 
 
 class DiningTableHomePage extends StatelessWidget {

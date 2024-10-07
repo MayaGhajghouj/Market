@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:mmarket_interfaces/widgets/product_description_item.dart';
+
+import '../../widgets_componants/product_description_item.dart';
 
 
 class ProductDes_Sofa  extends StatelessWidget {
+   ProductDes_Sofa({super.key});
+
   @override
   Widget build(BuildContext context) {
     return ProductDescriptionItem(
