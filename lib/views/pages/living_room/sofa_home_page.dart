@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import '../../constants/colors.dart';
-import '../../widgets_componants/product_list_item.dart';
+import 'package:mmarket_interfaces/constants/colors.dart';
+import 'package:mmarket_interfaces/views/widgets_componants/product_list_item.dart';
 
 class SofaHomePage extends StatelessWidget {
   const SofaHomePage({super.key});

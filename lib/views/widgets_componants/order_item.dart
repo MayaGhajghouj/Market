@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import '../constants/colors.dart';
-
+import '../../constants/colors.dart';
 Widget orderItem ({
   required String imagePath,
   required String title,

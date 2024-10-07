@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mmarket_interfaces/constants/colors.dart';
 
-import '../constants/colors.dart';
 
 Widget ProductLIstItem ({
 required String PicPath ,//picture

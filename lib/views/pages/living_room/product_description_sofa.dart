@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../widgets_componants/product_description_item.dart';
+import 'package:mmarket_interfaces/views/widgets_componants/product_description_item.dart';
 
 
 class ProductDes_Sofa  extends StatelessWidget {

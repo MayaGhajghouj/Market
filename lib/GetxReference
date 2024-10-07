@@ -1,0 +1,14 @@
+
+         routing :
+       ==================
+For example, if you want to navigate to another page:
+Get.toNamed('/productDescriptionDiningTable'); // Navigates to the route you defined
+
+If you need to go back to the previous page:
+Get.back(); // Equivalent to Navigator.pop()
+
+To remove all previous routes and navigate to a new page:
+Get.offAllNamed('/welcomeBackPage'); // Replaces the entire stack
+
+
+

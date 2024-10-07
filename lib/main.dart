@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mmarket_interfaces/views/pages/dining_room/dining-table_home_page.dart';
+import 'package:mmarket_interfaces/views/pages/dining_room/product_description_DiningTable.dart';
+import 'package:mmarket_interfaces/views/pages/living_room/product_description_sofa.dart';
+import 'package:mmarket_interfaces/views/pages/living_room/sofa_home_page.dart';
+import 'package:mmarket_interfaces/views/pages/profile_pages/edit_profile.dart';
+import 'package:mmarket_interfaces/views/pages/profile_pages/my_orders.dart';
+import 'package:mmarket_interfaces/views/pages/profile_pages/profile.dart';
+import 'package:mmarket_interfaces/views/pages/review_page.dart';
+import 'package:mmarket_interfaces/views/pages/sections_livingroom.dart';
+import 'package:mmarket_interfaces/views/pages/welcome_back_page.dart';
 
-import 'pages/dining_room/dining-table_home_page.dart';
-import 'pages/dining_room/product_description_DiningTable.dart';
-import 'pages/living_room/product_description_sofa.dart';
-import 'pages/living_room/sofa_home_page.dart';
-import 'pages/profile_pages/edit_profile.dart';
-import 'pages/profile_pages/my_orders.dart';
-import 'pages/profile_pages/profile.dart';
-import 'pages/review_page.dart';
-import 'pages/sections_livingroom.dart';
-import 'pages/welcome_back_page.dart';
 
 void main() {
   runApp(const MyApp());

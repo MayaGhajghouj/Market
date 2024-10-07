@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mmarket_interfaces/constants/colors.dart';
 
-import '../constants/colors.dart';
 
 class ReviewPage extends StatelessWidget {
   const ReviewPage({super.key});

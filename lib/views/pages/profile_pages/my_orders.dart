@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mmarket_interfaces/constants/colors.dart';
+import 'package:mmarket_interfaces/views/widgets_componants/order_item.dart';
 
-import '../../constants/colors.dart';
-import '../../widgets_componants/order_item.dart';
 
 class MyOrders extends StatelessWidget {
   const MyOrders({super.key});

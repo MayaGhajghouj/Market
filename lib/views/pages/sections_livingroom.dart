@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../constants/colors.dart';
+import 'package:mmarket_interfaces/constants/colors.dart';
 
 class SectionsLivingroom extends StatelessWidget {
   const SectionsLivingroom({super.key});
