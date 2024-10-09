@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mmarket_interfaces/constants/colors.dart';
+import 'package:mmarket_interfaces/core/app_routers.dart';
 import 'package:mmarket_interfaces/widgets_componants/product_list_item.dart';
 
 class livingroom_HomePage extends StatelessWidget {
@@ -91,6 +92,7 @@ class livingroom_HomePage extends StatelessWidget {
               Row(
                 children: [
                   ProductLIstItem(
+                    ProductDetailsPage:Routes.ProductDes_Sofa,
                     PicPath:'assets/images/sofatopleft.png',
                     Title: 'Luxe Lounge Sofa',
                     Description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
