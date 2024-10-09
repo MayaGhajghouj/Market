@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:mmarket_interfaces/modules/dining_room/views/diningroom_home_page.dart';
 import 'package:mmarket_interfaces/modules/dining_room/views/product_description_DiningTable.dart';
+import 'package:mmarket_interfaces/modules/dining_room/views/sections_diningroom.dart';
 import 'package:mmarket_interfaces/modules/living_room/views/product_description_sofa.dart';
 import 'package:mmarket_interfaces/modules/living_room/views/sections_livingroom.dart';
 import 'package:mmarket_interfaces/modules/living_room/views/livingroom_home_page.dart';
@@ -14,6 +15,7 @@ class Routes {
   static const ProductDes_DiningTable = '/ProductDes_DiningTable';
   static const DiningRoomHomePage = '/DiningRoomHomePage';
   static const SectionsLivingroom = '/SectionsLivingroom';
+  static const SectionsDiningroom ='/SectionsDiningroom';
   static const ProductDes_Sofa = '/ProductDes_Sofa';
   static const livingroom_HomePage = '/livingroom_HomePage';
   static const EditProfile = '/EditProfile';
@@ -21,6 +23,7 @@ class Routes {
   static const MyOrders = '/MyOrders';
   static const ReviewPage = '/ReviewPage';
   static const WelcomeBackPage = '/WelcomeBackPage';
+
 }
 
 class AppPages {
@@ -64,6 +67,10 @@ class AppPages {
     GetPage(
       name: Routes.WelcomeBackPage,
       page: () => WelcomeBackPage(),
+    ),
+    GetPage(
+      name: Routes.SectionsDiningroom,
+      page: () => SectionsDiningroom(),
     ),
   ];
 }

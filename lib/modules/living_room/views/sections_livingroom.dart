@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mmarket_interfaces/constants/colors.dart';
+import 'package:mmarket_interfaces/core/app_routers.dart';
 
 import '../../../widgets_componants/sections_page.dart';
 
@@ -14,6 +15,7 @@ class SectionsLivingroom extends StatelessWidget {
         section2: 'Lights',
         section3: 'Chairs',
         section4: 'Sofa',
+        routing_section4: Routes.livingroom_HomePage,
         section5: 'Tables',
         section6: 'Cupboard',);
   }

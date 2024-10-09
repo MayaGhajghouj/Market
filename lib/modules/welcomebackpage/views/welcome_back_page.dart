@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mmarket_interfaces/constants/colors.dart';
 import 'package:mmarket_interfaces/core/app_routers.dart';
+import 'package:mmarket_interfaces/modules/dining_room/views/sections_diningroom.dart';
 
 
 class WelcomeBackPage extends StatelessWidget {
@@ -111,7 +112,7 @@ class WelcomeBackPage extends StatelessWidget {
                     ),
                     child:  GestureDetector(
                       onTap: () {
-                        Get.toNamed(Routes.livingroom_HomePage);
+                        Get.toNamed(Routes.SectionsLivingroom);
                       },
                       child: const Image(
                         image:AssetImage(
@@ -144,7 +145,7 @@ class WelcomeBackPage extends StatelessWidget {
                     ),
                     child:  GestureDetector(
                       onTap: () {
-                        Get.toNamed(Routes.DiningRoomHomePage);
+                        Get.toNamed(Routes.SectionsDiningroom);
                       },
                       child: const Image(
                         image:AssetImage(
