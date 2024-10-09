@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mmarket_interfaces/constants/colors.dart';
+import 'package:mmarket_interfaces/core/app_routers.dart';
 import 'package:mmarket_interfaces/widgets_componants/product_list_item.dart';
 
 
@@ -98,6 +99,7 @@ class DiningRoomHomePage extends StatelessWidget {
               Row(
              children: [
                ProductLIstItem(
+                 ProductDetailsPage: Routes.ProductDes_DiningTable,
                PicPath:'assets/images/Topleft.png',
                Title: 'Deluxe table',
                Description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
