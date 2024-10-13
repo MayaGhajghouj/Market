@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mmarket_interfaces/core/app_routers.dart';
@@ -12,9 +13,25 @@ import 'package:mmarket_interfaces/modules/reviewpage/views/review_page.dart';
 import 'package:mmarket_interfaces/modules/living_room/views/sections_livingroom.dart';
 import 'package:mmarket_interfaces/modules/welcomebackpage/views/welcome_back_page.dart';
 
-void main() {
+void main() async{
+  try {
+    WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp(
+    );
+    print('succes in firebase =====================');
+  }
+  catch (e) {
+    print("Failed to initialize Firebase: $e");
+  }
   runApp(const MyApp());
 }
+/*
+* WidgetsFlutterBinding.ensureInitialized();
+await Firebase.initializeApp(
+  options: DefaultFirebaseOptions.currentPlatform,
+);
+runApp(const MyApp());
+* */
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

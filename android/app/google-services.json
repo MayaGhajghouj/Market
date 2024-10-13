@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "208459832727",
+    "project_id": "home-furniture-market-c5d86",
+    "storage_bucket": "home-furniture-market-c5d86.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:208459832727:android:4b9fc21bc470b30d6978d2",
+        "android_client_info": {
+          "package_name": "com.example.mmarket_interfaces"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4hov1EE7goXUV_84RJxhvHR9pMILUnIY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
