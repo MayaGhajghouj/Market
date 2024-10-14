@@ -2,16 +2,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mmarket_interfaces/core/app_routers.dart';
-import 'package:mmarket_interfaces/modules/dining_room/views/diningroom_home_page.dart';
-import 'package:mmarket_interfaces/modules/dining_room/views/product_description_DiningTable.dart';
-import 'package:mmarket_interfaces/modules/living_room/views/product_description_sofa.dart';
-import 'package:mmarket_interfaces/modules/living_room/views/livingroom_home_page.dart';
-import 'package:mmarket_interfaces/modules/profile_pages/views/edit_profile.dart';
-import 'package:mmarket_interfaces/modules/profile_pages/views/my_orders.dart';
-import 'package:mmarket_interfaces/modules/profile_pages/views/profile.dart';
-import 'package:mmarket_interfaces/modules/reviewpage/views/review_page.dart';
-import 'package:mmarket_interfaces/modules/living_room/views/sections_livingroom.dart';
-import 'package:mmarket_interfaces/modules/welcomebackpage/views/welcome_back_page.dart';
 
 void main() async{
   try {
@@ -45,7 +35,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      initialRoute: Routes.WelcomeBackPage,
+      initialRoute: Routes.Login,
       getPages: AppPages.Pages,
     );
   }

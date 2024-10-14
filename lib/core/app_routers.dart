@@ -5,6 +5,8 @@ import 'package:mmarket_interfaces/modules/dining_room/views/sections_diningroom
 import 'package:mmarket_interfaces/modules/living_room/views/product_description_sofa.dart';
 import 'package:mmarket_interfaces/modules/living_room/views/sections_livingroom.dart';
 import 'package:mmarket_interfaces/modules/living_room/views/livingroom_home_page.dart';
+import 'package:mmarket_interfaces/modules/login_signin_page/views/login.dart';
+import 'package:mmarket_interfaces/modules/login_signin_page/views/signup.dart';
 import 'package:mmarket_interfaces/modules/profile_pages/views/my_orders.dart';
 import 'package:mmarket_interfaces/modules/profile_pages/views/edit_profile.dart';
 import 'package:mmarket_interfaces/modules/profile_pages/views/profile.dart';
@@ -23,6 +25,8 @@ class Routes {
   static const MyOrders = '/MyOrders';
   static const ReviewPage = '/ReviewPage';
   static const WelcomeBackPage = '/WelcomeBackPage';
+  static const Login='/Login';
+  static const Signup='/Signup';
 
 }
 
@@ -71,6 +75,14 @@ class AppPages {
     GetPage(
       name: Routes.SectionsDiningroom,
       page: () => SectionsDiningroom(),
+    ),
+    GetPage(
+      name: Routes.Login,
+      page: () => Login(),
+    ),
+    GetPage(
+      name: Routes.Signup,
+      page: () => Signup(),
     ),
   ];
 }
