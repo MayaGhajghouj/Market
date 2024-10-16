@@ -39,7 +39,7 @@ class Profile extends StatelessWidget {
         //backgroundColor: Beige,
       ),
       body: Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
             const Center(
@@ -106,7 +106,7 @@ class Profile extends StatelessWidget {
               leading: Container(
                 height: 35,
                 width: 35,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   color: salmon,
                   image: DecorationImage(
@@ -115,7 +115,7 @@ class Profile extends StatelessWidget {
                   ),
                 ),
               ),
-              title: Text('Privacy Policy',
+              title: const Text('Privacy Policy',
               style: TextStyle(
                 fontWeight: FontWeight.w400,
                 fontSize: 20,
@@ -127,7 +127,7 @@ class Profile extends StatelessWidget {
               leading: Container(
                 height: 35,
                 width: 35,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   color: salmon,
                   image: DecorationImage(
@@ -136,7 +136,7 @@ class Profile extends StatelessWidget {
                   ),
                 ),
               ),
-              title: Text('Payment Methods',
+              title: const Text('Payment Methods',
                 style: TextStyle(
                   fontWeight: FontWeight.w400,
                   fontSize: 20,
@@ -148,7 +148,7 @@ class Profile extends StatelessWidget {
               leading: Container(
                 height: 35,
                 width: 35,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   color: salmon,
                   image: DecorationImage(
@@ -157,7 +157,7 @@ class Profile extends StatelessWidget {
                   ),
                 ),
               ),
-              title: Text('Notification',
+              title: const Text('Notification',
                 style: TextStyle(
                   fontWeight: FontWeight.w400,
                   fontSize: 20,
@@ -169,7 +169,7 @@ class Profile extends StatelessWidget {
               leading: Container(
                 height: 35,
                 width: 35,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   color: salmon,
                   image: DecorationImage(
@@ -178,7 +178,7 @@ class Profile extends StatelessWidget {
                   ),
                 ),
               ),
-              title: Text('Settings',
+              title: const Text('Settings',
                 style: TextStyle(
                   fontWeight: FontWeight.w400,
                   fontSize: 20,
@@ -190,7 +190,7 @@ class Profile extends StatelessWidget {
               leading: Container(
                 height: 35,
                 width: 35,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   color: salmon,
                   image: DecorationImage(
@@ -199,7 +199,7 @@ class Profile extends StatelessWidget {
                   ),
                 ),
               ),
-              title: Text('Help',
+              title: const Text('Help',
                 style: TextStyle(
                   fontWeight: FontWeight.w400,
                   fontSize: 20,
@@ -211,7 +211,7 @@ class Profile extends StatelessWidget {
               leading: Container(
                 height: 35,
                 width: 35,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   color: salmon,
                   image: DecorationImage(
@@ -220,7 +220,7 @@ class Profile extends StatelessWidget {
                   ),
                 ),
               ),
-              title: Text('Logout',
+              title: const Text('Logout',
                 style: TextStyle(
                   fontWeight: FontWeight.w400,
                   fontSize: 20,

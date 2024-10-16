@@ -5,7 +5,7 @@ import 'package:mmarket_interfaces/widgets_componants/product_list_item.dart';
 
 
 class DiningRoomHomePage extends StatelessWidget {
-   DiningRoomHomePage({super.key});
+   const DiningRoomHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {

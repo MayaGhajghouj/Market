@@ -45,7 +45,7 @@ class ReviewPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                margin: EdgeInsets.all(10.0),
+                margin: const EdgeInsets.all(10.0),
                 color: Beige,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
@@ -71,13 +71,13 @@ class ReviewPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         IconButton(onPressed: (){},
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.star,
                             size: 25,
                             color: Terracotta,
                           ),
                         ),
-                        Text('5',
+                        const Text('5',
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 13,
@@ -85,13 +85,13 @@ class ReviewPage extends StatelessWidget {
                         ),
                         ),
                         IconButton(onPressed: (){},
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.remove_red_eye_rounded,
                             size: 23,
                             color: Terracotta,
                           ),
                         ),
-                        Text('654',
+                        const Text('654',
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             fontFamily: 'League Spartan',
@@ -104,7 +104,7 @@ class ReviewPage extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.all(10.0),
+                margin: const EdgeInsets.all(10.0),
                 color: Beige,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
@@ -130,13 +130,13 @@ class ReviewPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         IconButton(onPressed: (){},
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.star,
                             size: 25,
                             color: Terracotta,
                           ),
                         ),
-                        Text('5',
+                        const Text('5',
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             fontSize: 13,
@@ -144,13 +144,13 @@ class ReviewPage extends StatelessWidget {
                           ),
                         ),
                         IconButton(onPressed: (){},
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.remove_red_eye_rounded,
                             size: 23,
                             color: Terracotta,
                           ),
                         ),
-                        Text('654',
+                        const Text('654',
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             fontFamily: 'League Spartan',
@@ -163,7 +163,7 @@ class ReviewPage extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.all(10.0),
+                margin: const EdgeInsets.all(10.0),
                 color: Beige,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
@@ -189,13 +189,13 @@ class ReviewPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         IconButton(onPressed: (){},
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.star,
                             size: 25,
                             color: Terracotta,
                           ),
                         ),
-                        Text('5',
+                        const Text('5',
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             fontSize: 13,
@@ -203,13 +203,13 @@ class ReviewPage extends StatelessWidget {
                           ),
                         ),
                         IconButton(onPressed: (){},
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.remove_red_eye_rounded,
                             size: 23,
                             color: Terracotta,
                           ),
                         ),
-                        Text('654',
+                        const Text('654',
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             fontFamily: 'League Spartan',
@@ -222,7 +222,7 @@ class ReviewPage extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.all(10.0),
+                margin: const EdgeInsets.all(10.0),
                 color: Beige,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
@@ -248,13 +248,13 @@ class ReviewPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         IconButton(onPressed: (){},
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.star,
                             size: 25,
                             color: Terracotta,
                           ),
                         ),
-                        Text('5',
+                        const Text('5',
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             fontSize: 13,
@@ -262,13 +262,13 @@ class ReviewPage extends StatelessWidget {
                           ),
                         ),
                         IconButton(onPressed: (){},
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.remove_red_eye_rounded,
                             size: 23,
                             color: Terracotta,
                           ),
                         ),
-                        Text('654',
+                        const Text('654',
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             fontFamily: 'League Spartan',
@@ -281,7 +281,7 @@ class ReviewPage extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.all(10.0),
+                margin: const EdgeInsets.all(10.0),
                 color: Beige,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
@@ -307,13 +307,13 @@ class ReviewPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         IconButton(onPressed: (){},
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.star,
                             size: 25,
                             color: Terracotta,
                           ),
                         ),
-                        Text('5',
+                        const Text('5',
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             fontSize: 13,
@@ -321,13 +321,13 @@ class ReviewPage extends StatelessWidget {
                           ),
                         ),
                         IconButton(onPressed: (){},
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.remove_red_eye_rounded,
                             size: 23,
                             color: Terracotta,
                           ),
                         ),
-                        Text('654',
+                        const Text('654',
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             fontFamily: 'League Spartan',
@@ -340,7 +340,7 @@ class ReviewPage extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.all(10.0),
+                margin: const EdgeInsets.all(10.0),
                 color: Beige,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
@@ -366,13 +366,13 @@ class ReviewPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         IconButton(onPressed: (){},
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.star,
                             size: 25,
                             color: Terracotta,
                           ),
                         ),
-                        Text('5',
+                        const Text('5',
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             fontSize: 13,
@@ -380,13 +380,13 @@ class ReviewPage extends StatelessWidget {
                           ),
                         ),
                         IconButton(onPressed: (){},
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.remove_red_eye_rounded,
                             size: 23,
                             color: Terracotta,
                           ),
                         ),
-                        Text('654',
+                        const Text('654',
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             fontFamily: 'League Spartan',

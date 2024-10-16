@@ -43,7 +43,7 @@ class EditProfile extends StatelessWidget {
             Center(
       child: Stack(
         children: [
-          CircleAvatar(
+          const CircleAvatar(
             backgroundImage: AssetImage('assets/images/pp.png'),
             radius: 80,
           ),
@@ -53,12 +53,12 @@ class EditProfile extends StatelessWidget {
             child: Container(
               height: 35,
               width: 35,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 color: salmon,
               ),
               child: IconButton(onPressed: () {},
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.camera_alt_outlined,
                     size: 20,
                   ),
@@ -68,11 +68,11 @@ class EditProfile extends StatelessWidget {
         ],
       ),
           ),
-            SizedBox(height: 5.0,),
+            const SizedBox(height: 5.0,),
             Container(
-              padding: EdgeInsets.all(5),
+              padding: const EdgeInsets.all(5),
               color: Beige,
-              child: Column(
+              child: const Column(
                 children: [
                   Text('Madison Smith',
                     style: TextStyle(
@@ -120,7 +120,7 @@ class EditProfile extends StatelessWidget {
                   const SizedBox(height: 2.0,),
                   TextFormField(
                     keyboardType: TextInputType.text,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: 'Madison Smith',
                       hintStyle: TextStyle(
                         fontFamily: 'Poppins',
@@ -147,7 +147,7 @@ class EditProfile extends StatelessWidget {
                   const SizedBox(height: 2.0,),
                   TextFormField(
                     keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: 'madisons@example.com',
                       hintStyle: TextStyle(
                       fontFamily: 'Poppins',
@@ -174,7 +174,7 @@ class EditProfile extends StatelessWidget {
                   const SizedBox(height: 2.0,),
                   TextFormField(
                     keyboardType: TextInputType.phone,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: '+123 4567 890',
                       hintStyle: TextStyle(
                         fontFamily: 'Poppins',
@@ -201,7 +201,7 @@ class EditProfile extends StatelessWidget {
                   const SizedBox(height: 2.0,),
                   TextFormField(
                     keyboardType: TextInputType.datetime,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: '01 / 04 / 199X',
                       hintStyle: TextStyle(
                         fontFamily: 'Poppins',
@@ -232,19 +232,19 @@ class EditProfile extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               borderRadius: BorderRadius.all(Radius.circular(15)),
                               color: Beige,
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                Icon(Icons.radio_button_unchecked_rounded,
+                                const Icon(Icons.radio_button_unchecked_rounded,
                                   color: salmon,
                                 ),
                                 Container(
-                                  padding: EdgeInsets.all(10.0),
-                                  child: Text('Male',
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: const Text('Male',
                                     style: TextStyle(
                                       fontFamily: 'Poppins',
                                       fontSize: 15,
@@ -261,19 +261,19 @@ class EditProfile extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               borderRadius: BorderRadius.all(Radius.circular(15)),
                               color: Beige,
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                Icon(Icons.radio_button_on,
+                                const Icon(Icons.radio_button_on,
                                   color: salmon,
                                 ),
                                 Container(
-                                  padding: EdgeInsets.all(10.0),
-                                  child: Text('Female',
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: const Text('Female',
                                     style: TextStyle(
                                       fontFamily: 'Poppins',
                                       fontSize: 15,

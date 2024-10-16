@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mmarket_interfaces/constants/colors.dart';
 import 'package:mmarket_interfaces/core/app_routers.dart';
-import 'package:mmarket_interfaces/modules/dining_room/views/sections_diningroom.dart';
 
 
 class WelcomeBackPage extends StatelessWidget {
@@ -271,11 +270,11 @@ class WelcomeBackPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Expanded(
-                      child: Container(
+                    const Expanded(
+                      child: SizedBox(
                         height: 171,
                         width: 171,
-                        child: const Image(
+                        child: Image(
                           image:AssetImage(
                             'assets/images/alejandrao_httpss.mj 1.png',),
                         ),

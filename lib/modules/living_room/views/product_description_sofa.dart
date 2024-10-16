@@ -3,7 +3,7 @@ import 'package:mmarket_interfaces/widgets_componants/product_description_item.d
 
 
 class ProductDes_Sofa  extends StatelessWidget {
-   ProductDes_Sofa({super.key});
+   const ProductDes_Sofa({super.key});
 
   @override
   Widget build(BuildContext context) {
