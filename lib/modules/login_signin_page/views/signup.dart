@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mmarket_interfaces/core/app_routers.dart';
-import 'package:mmarket_interfaces/core/snackbar.dart';
 import 'package:mmarket_interfaces/widgets_componants/formdata.dart';
 
 import '../../../constants/colors.dart';
@@ -207,24 +206,14 @@ class Signup extends StatelessWidget {
                     child: MaterialButton(
                       onPressed: ()  {
                      if(_formKey.currentState!.validate()){
-                         authSignUpController.AuthSignUpFunction(
+                         authSignUpController.authSignUpFunction(
+                           context: context,
                            fullName: fullName.text,
                            emailAddress: emailAddress.text,
                            mobileNumber: mobileNumber.text,
                            dateOfBirth: dateOfBirth.text,
-                           password: password.text,).then((_){
-                           AppSnackBar(
-                              
-                               msg: 'Check the email box to verification', context: context);
-                           Future.delayed( const Duration(seconds: 4), ()
-                           {
-                             Get.toNamed(Routes.Login);
-                           });
-
-                         });
-
+                           password: password.text,);
                      }
-
                       },
                       child: const Text('Sign Up',
                         style: TextStyle(
