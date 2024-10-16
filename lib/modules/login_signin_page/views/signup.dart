@@ -1,13 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mmarket_interfaces/core/app_routers.dart';
+import 'package:mmarket_interfaces/core/snackbar.dart';
 import 'package:mmarket_interfaces/widgets_componants/formdata.dart';
 
 import '../../../constants/colors.dart';
+import '../controllers/signupController.dart';
 
 class Signup extends StatelessWidget {
-  const Signup({super.key});
-
+   Signup({super.key});
+   final TextEditingController fullName =TextEditingController();
+   final TextEditingController emailAddress =TextEditingController();
+   final TextEditingController mobileNumber =TextEditingController();
+   final TextEditingController dateOfBirth =TextEditingController();
+   final TextEditingController password =TextEditingController();
+   final TextEditingController confirmPassword =TextEditingController();
+   final _formKey = GlobalKey<FormState>();
+   final AuthSignUpController authSignUpController=AuthSignUpController();
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -25,6 +34,7 @@ class Signup extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Form(
+          key: _formKey,
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,6 +49,7 @@ class Signup extends StatelessWidget {
                 ),
                 const SizedBox(height: 5.0,),
                 FormDataitem(
+                  controller: fullName,
                   keyboardtype: TextInputType.text,
                   hintext: 'Maya ghajghouj',
                   fontcolor: salmon,
@@ -55,6 +66,7 @@ class Signup extends StatelessWidget {
                 ),
                 const SizedBox(height: 5.0,),
                 FormDataitem(
+                  controller: emailAddress,
                     keyboardtype: TextInputType.emailAddress,
                     hintext: 'example@example.com',
                     fontcolor: salmon,
@@ -71,6 +83,7 @@ class Signup extends StatelessWidget {
                 ),
                 const SizedBox(height: 5.0,),
                 FormDataitem(
+                  controller: mobileNumber,
                     keyboardtype: TextInputType.phone,
                     hintext: '+ 123 456 789',
                     fontcolor: salmon,
@@ -87,6 +100,7 @@ class Signup extends StatelessWidget {
                 ),
                 const SizedBox(height: 5.0,),
                 FormDataitem(
+                  controller: dateOfBirth,
                     keyboardtype: TextInputType.datetime,
                     hintext: 'DD / MM /YYY',
                     fontcolor: salmon,
@@ -103,11 +117,12 @@ class Signup extends StatelessWidget {
                 ),
                 const SizedBox(height: 5.0,),
                 FormDataitem(
+                  controller: password,
                   obscuretext: true,
                     keyboardtype: TextInputType.text,
                     hintext: '●●●●●●●●',
                     fontcolor: salmon,
-                    suffixicon: Icon(Icons.remove_red_eye,
+                    suffixicon: const Icon(Icons.remove_red_eye,
                       color: salmon,
                     )
                 ),
@@ -123,16 +138,17 @@ class Signup extends StatelessWidget {
                 ),
                 const SizedBox(height: 5.0,),
                 FormDataitem(
+                  controller: confirmPassword,
                     keyboardtype: TextInputType.text,
                     hintext: '●●●●●●●●',
                     fontcolor: salmon,
-                    suffixicon: Icon(Icons.remove_red_eye,
+                    suffixicon: const Icon(Icons.remove_red_eye,
                       color: salmon,
                     )
                 ),
                 const SizedBox(height: 10.0,),
-                Center(
-                  child: const Text('By continuing, you agree to ',
+                const Center(
+                  child: Text('By continuing, you agree to ',
                     style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w300,
@@ -157,7 +173,7 @@ class Signup extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Text('and',
+                    const Text('and',
                       style: TextStyle(
                         fontSize: 13,
                         fontWeight: FontWeight.w300,
@@ -183,14 +199,34 @@ class Signup extends StatelessWidget {
                 Center(
                   child: Container(
                     width: 186,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       shape: BoxShape.rectangle,
                       borderRadius: BorderRadius.all(Radius.circular(19.0)),
                       color: salmon,
                     ),
                     child: MaterialButton(
-                      onPressed: (){},
-                      child: Text('Sign Up',
+                      onPressed: ()  {
+                     if(_formKey.currentState!.validate()){
+                         authSignUpController.AuthSignUpFunction(
+                           fullName: fullName.text,
+                           emailAddress: emailAddress.text,
+                           mobileNumber: mobileNumber.text,
+                           dateOfBirth: dateOfBirth.text,
+                           password: password.text,).then((_){
+                           AppSnackBar(
+                              
+                               msg: 'Check the email box to verification', context: context);
+                           Future.delayed( const Duration(seconds: 4), ()
+                           {
+                             Get.toNamed(Routes.Login);
+                           });
+
+                         });
+
+                     }
+
+                      },
+                      child: const Text('Sign Up',
                         style: TextStyle(
                           fontWeight:FontWeight.w600 ,
                           fontSize:20 ,
@@ -217,13 +253,13 @@ class Signup extends StatelessWidget {
                       children: [
                         IconButton(
                             onPressed: (){},
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.facebook_outlined,
                             )
                         ),
                         IconButton(
                             onPressed: (){},
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.alternate_email,
                             )
                         ),

@@ -42,7 +42,7 @@ class AppPages {
     ),
     GetPage(
       name: Routes.SectionsLivingroom,
-      page: () => SectionsLivingroom(),
+      page: () => const SectionsLivingroom(),
     ),
     GetPage(
       name: Routes.ProductDes_Sofa,
@@ -50,35 +50,35 @@ class AppPages {
     ),
     GetPage(
       name: Routes.livingroom_HomePage,
-      page: () => livingroom_HomePage(),
+      page: () => const livingroom_HomePage(),
     ),
     GetPage(
       name: Routes.EditProfile,
-      page: () => EditProfile(),
+      page: () => const EditProfile(),
     ),
     GetPage(
       name: Routes.Profile,
-      page: () => Profile(),
+      page: () => const Profile(),
     ),
     GetPage(
       name: Routes.MyOrders,
-      page: () => MyOrders(),
+      page: () => const MyOrders(),
     ),
     GetPage(
       name: Routes.ReviewPage,
-      page: () => ReviewPage(),
+      page: () => const ReviewPage(),
     ),
     GetPage(
       name: Routes.WelcomeBackPage,
-      page: () => WelcomeBackPage(),
+      page: () => const WelcomeBackPage(),
     ),
     GetPage(
       name: Routes.SectionsDiningroom,
-      page: () => SectionsDiningroom(),
+      page: () => const SectionsDiningroom(),
     ),
     GetPage(
       name: Routes.Login,
-      page: () => Login(),
+      page: () =>  Login(),
     ),
     GetPage(
       name: Routes.Signup,

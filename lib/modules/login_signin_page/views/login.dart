@@ -4,8 +4,15 @@ import 'package:mmarket_interfaces/constants/colors.dart';
 import 'package:mmarket_interfaces/core/app_routers.dart';
 import 'package:mmarket_interfaces/widgets_componants/formdata.dart';
 
+import '../controllers/signupController.dart';
+
 class Login extends StatelessWidget {
-  const Login({super.key});
+   Login({super.key});
+
+   final TextEditingController password =TextEditingController();
+   final TextEditingController emailAddress =TextEditingController();
+   final _formKey = GlobalKey<FormState>();
+   final AuthSignUpController authSignUpController=AuthSignUpController();
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +31,7 @@ class Login extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Form(
+          key: _formKey,
           child: SingleChildScrollView(
             child: Column(
                crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,6 +63,7 @@ class Login extends StatelessWidget {
                 ),
                 const SizedBox(height: 10.0,),
                 FormDataitem(
+                  controller: emailAddress,
                     keyboardtype: TextInputType.text,
                     hintext: 'example@example.com',
                     fontcolor: salmon,
@@ -70,10 +79,11 @@ class Login extends StatelessWidget {
                 ),
                 const SizedBox(height: 10.0,),
                 FormDataitem(
+                  controller: password,
                   keyboardtype: TextInputType.text,
                   hintext: '●●●●●●●●',
                   fontcolor: salmon,
-                  suffixicon: Icon(Icons.remove_red_eye,
+                  suffixicon: const Icon(Icons.remove_red_eye,
                   color: salmon,
                   )
                 ),
@@ -81,14 +91,19 @@ class Login extends StatelessWidget {
                 Center(
                   child: Container(
                     width: 186,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       shape: BoxShape.rectangle,
                       borderRadius: BorderRadius.all(Radius.circular(19.0)),
                       color: salmon,
                     ),
                     child: MaterialButton(
-                        onPressed: (){},
-                      child: Text('Log In',
+                        onPressed: (){
+                          if(_formKey.currentState!.validate())
+                            {
+                              //authSignUpController.AuthSignUpFunction(fullName: fullName, emailAddress: emailAddress, mobileNumber: mobileNumber, dateOfBirth: dateOfBirth, password: password)
+                            }
+                        },
+                      child: const Text('Log In',
                       style: TextStyle(
                         fontWeight:FontWeight.w600 ,
                         fontSize:20 ,
@@ -103,7 +118,7 @@ class Login extends StatelessWidget {
                 Center(
                   child: TextButton(
                     onPressed: () {  },
-                    child: Text('forget password?',
+                    child: const Text('forget password?',
                       style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
@@ -128,13 +143,13 @@ class Login extends StatelessWidget {
                       children: [
                         IconButton(
                             onPressed: (){},
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.facebook_outlined,
                             )
                         ),
                         IconButton(
                             onPressed: (){},
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.alternate_email,
                             )
                         ),

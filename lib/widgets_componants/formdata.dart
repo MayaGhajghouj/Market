@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../constants/colors.dart';
 
 Widget FormDataitem({
+  required TextEditingController controller,
   required TextInputType keyboardtype,
   required String hintext ,
   required Color fontcolor,
@@ -11,6 +12,7 @@ Widget FormDataitem({
   bool obscuretext=false,
 }){
   return TextFormField(
+    controller: controller,
     obscureText: obscuretext,
     keyboardType: keyboardtype,
     decoration: InputDecoration(
