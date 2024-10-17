@@ -3,8 +3,7 @@ import 'package:get/get.dart';
 import 'package:mmarket_interfaces/constants/colors.dart';
 import 'package:mmarket_interfaces/core/app_routers.dart';
 import 'package:mmarket_interfaces/widgets_componants/formdata.dart';
-
-import '../controllers/signupController.dart';
+import '../controllers/login_controller.dart';
 
 class Login extends StatelessWidget {
    Login({super.key});
@@ -12,7 +11,7 @@ class Login extends StatelessWidget {
    final TextEditingController password =TextEditingController();
    final TextEditingController emailAddress =TextEditingController();
    final _formKey = GlobalKey<FormState>();
-   final AuthSignUpController authSignUpController=AuthSignUpController();
+   final AuthSignInController authSignUpController=AuthSignInController();
 
   @override
   Widget build(BuildContext context) {
@@ -97,10 +96,14 @@ class Login extends StatelessWidget {
                       color: salmon,
                     ),
                     child: MaterialButton(
-                        onPressed: (){
+                        onPressed: ()async
+                        {
                           if(_formKey.currentState!.validate())
                             {
-                              //authSignUpController.AuthSignUpFunction(fullName: fullName, emailAddress: emailAddress, mobileNumber: mobileNumber, dateOfBirth: dateOfBirth, password: password)
+                             await authSignUpController.authLoginFunction(
+                                  emailAddress: emailAddress.text,
+                                  password: password.text,
+                                  context: context);
                             }
                         },
                       child: const Text('Log In',

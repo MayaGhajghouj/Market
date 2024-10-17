@@ -4,7 +4,7 @@ import 'package:mmarket_interfaces/core/app_routers.dart';
 import 'package:mmarket_interfaces/widgets_componants/formdata.dart';
 
 import '../../../constants/colors.dart';
-import '../controllers/signupController.dart';
+import '../controllers/signup_controller.dart';
 
 class Signup extends StatelessWidget {
    Signup({super.key});
@@ -204,9 +204,9 @@ class Signup extends StatelessWidget {
                       color: salmon,
                     ),
                     child: MaterialButton(
-                      onPressed: ()  {
+                      onPressed: () async {
                      if(_formKey.currentState!.validate()){
-                         authSignUpController.authSignUpFunction(
+                       await  authSignUpController.authSignUpFunction(
                            context: context,
                            fullName: fullName.text,
                            emailAddress: emailAddress.text,
