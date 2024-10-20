@@ -3,9 +3,12 @@ import 'package:get/get.dart';
 import 'package:mmarket_interfaces/core/app_routers.dart';
 import 'package:mmarket_interfaces/core/snackbar.dart';
 
-class AuthSignInController{
+import '../widget_componants/show_alert_dialog.dart';
+
+class AuthSignInController extends GetxController{
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  var Isloadin= false.obs;
 
   Future<void> authLoginFunction({
     required String emailAddress,
@@ -13,6 +16,7 @@ class AuthSignInController{
     required context,
   }) async {
     try {
+      Isloadin.value=true;
       final credentialUser = await _auth.signInWithEmailAndPassword(
         email: emailAddress,
         password: password,
@@ -24,9 +28,14 @@ class AuthSignInController{
         // Check if the email is verified
         if (user.emailVerified)
         {
+          Isloadin.value=false;
           print('\nUser logged in successfully\n');
           AppSnackBar(context: context, msg: 'User logged in successfully');
           Get.toNamed(Routes.WelcomeBackPage);
+        }
+        else{
+          print('\nEmail did not verified \n');
+          showEmailNotReceivedDialog(context: context, user: user);
         }
       }
     } on FirebaseAuthException catch (e) {
@@ -39,8 +48,12 @@ class AuthSignInController{
         AppSnackBar(context: context, msg: 'Wrong password provided for that user.');
 
       }
-    } catch (e) {
+    } catch (e)
+    {
       print('\nerror in login \n $e');
+    }
+    finally{
+      Isloadin.value=false;
     }
   }
 
