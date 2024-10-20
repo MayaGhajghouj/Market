@@ -5,11 +5,15 @@ import 'package:get/get.dart';
 import 'package:mmarket_interfaces/core/app_routers.dart';
 import 'package:mmarket_interfaces/core/snackbar.dart';
 
+import '../../../core/manage_app_state/app_state_controller.dart';
+
 
 class AuthSignUpController{
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final AppStateController appStateController = Get.put(AppStateController());
+
 
   Future<void> authSignUpFunction (
       {
@@ -21,6 +25,7 @@ class AuthSignUpController{
         required BuildContext context,
       }) async {
     try {
+      appStateController.startLoading();
       final credentalUser = await _auth.createUserWithEmailAndPassword(
         email: emailAddress,
         password: password,
@@ -37,6 +42,7 @@ class AuthSignUpController{
           "mobileNumber": mobileNumber,
           "dateOfBirth": dateOfBirth,
         };
+
         // Add a new document with a generated ID
        await _firestore.collection("usersData").doc(user.uid).set(userData).then((_){
          print('\ndata is added to firestore collection USERDATA.\n');
@@ -44,6 +50,8 @@ class AuthSignUpController{
        }).catchError((e){
          print('\nError in adding data to firestore $e \n');
        });
+        appStateController.setSuccess();
+
        // Send verification email to validate the user
         await user.sendEmailVerification().then((_){
           print('\nVerification email sent.\n');
@@ -60,6 +68,7 @@ class AuthSignUpController{
     }//try
     on FirebaseAuthException catch (e)
     {
+      appStateController.setError();
       if (e.code == 'weak-password')
       {
         print('The password provided is too weak.');
@@ -73,6 +82,7 @@ class AuthSignUpController{
     }
     catch (e)
     {
+      appStateController.setError();
       print('error in sign up \n $e');
     }
   }

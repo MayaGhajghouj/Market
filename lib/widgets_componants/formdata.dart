@@ -8,10 +8,12 @@ Widget FormDataitem({
   required TextInputType keyboardtype,
   required String hintext ,
   required Color fontcolor,
-  Icon? suffixicon,
+  Widget? suffixicon,
   bool obscuretext=false,
+  String? Function(String?)? validator,
 }){
   return TextFormField(
+    validator: validator,
     controller: controller,
     obscureText: obscuretext,
     keyboardType: keyboardtype,

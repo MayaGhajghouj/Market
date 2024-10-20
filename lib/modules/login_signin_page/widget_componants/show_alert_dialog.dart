@@ -21,7 +21,6 @@ void showEmailNotReceivedDialog ({required BuildContext context, required User u
           TextButton(
             child: Text('Resend Email'),
             onPressed: () async {
-
               // Call your function to resend the email here
              await user.sendEmailVerification();
              },
