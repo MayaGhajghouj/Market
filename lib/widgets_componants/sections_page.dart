@@ -1,14 +1,11 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mmarket_interfaces/core/app_routers.dart';
-
 import '../constants/colors.dart';
 
 Widget SectionsPage({
   required String appbarTitle,
   required String section1,
-   String? routing_section1,
+  String? routing_section1,
   required String section2,
   String? routing_section2,
   required String section3,
@@ -21,11 +18,11 @@ Widget SectionsPage({
   String? routing_section6,
   String? section7,
   String? routing_section7,
-}){
+}) {
   return Scaffold(
     appBar: AppBar(
       centerTitle: true,
-      title:  Text(
+      title: Text(
         appbarTitle,
         style: TextStyle(
           fontFamily: 'Poppins',
@@ -79,7 +76,8 @@ Widget SectionsPage({
                               ),
                             ),
                             child: Center(
-                              child: Text(section1,
+                              child: Text(
+                                section1,
                                 style: TextStyle(
                                   fontFamily: 'League Spartan',
                                   fontWeight: FontWeight.w300,
@@ -95,7 +93,7 @@ Widget SectionsPage({
                       ),
                       Expanded(
                         flex: 5,
-                        child:GestureDetector(
+                        child: GestureDetector(
                           onTap: () {
                             Get.toNamed(routing_section2!);
                           },
@@ -108,8 +106,9 @@ Widget SectionsPage({
                                 Radius.circular(15.0),
                               ),
                             ),
-                            child:  Center(
-                              child: Text(section2,
+                            child: Center(
+                              child: Text(
+                                section2,
                                 style: TextStyle(
                                   fontFamily: 'League Spartan',
                                   fontWeight: FontWeight.w300,
@@ -138,8 +137,9 @@ Widget SectionsPage({
                                 Radius.circular(15.0),
                               ),
                             ),
-                            child:  Center(
-                              child: Text(section3,
+                            child: Center(
+                              child: Text(
+                                section3,
                                 style: TextStyle(
                                   fontFamily: 'League Spartan',
                                   fontWeight: FontWeight.w300,
@@ -175,8 +175,9 @@ Widget SectionsPage({
                                 Radius.circular(15.0),
                               ),
                             ),
-                            child:  Center(
-                              child: Text(section4,
+                            child: Center(
+                              child: Text(
+                                section4,
                                 style: TextStyle(
                                   fontFamily: 'League Spartan',
                                   fontWeight: FontWeight.w300,
@@ -192,7 +193,7 @@ Widget SectionsPage({
                       ),
                       Expanded(
                         flex: 3,
-                        child:GestureDetector(
+                        child: GestureDetector(
                           onTap: () {
                             Get.toNamed(routing_section5!);
                           },
@@ -205,8 +206,9 @@ Widget SectionsPage({
                                 Radius.circular(15.0),
                               ),
                             ),
-                            child:  Center(
-                              child: Text(section5,
+                            child: Center(
+                              child: Text(
+                                section5,
                                 style: TextStyle(
                                   fontFamily: 'League Spartan',
                                   fontWeight: FontWeight.w300,
@@ -235,8 +237,9 @@ Widget SectionsPage({
                                 Radius.circular(15.0),
                               ),
                             ),
-                            child:  Center(
-                              child: Text(section6,
+                            child: Center(
+                              child: Text(
+                                section6,
                                 style: TextStyle(
                                   fontFamily: 'League Spartan',
                                   fontWeight: FontWeight.w300,
@@ -257,38 +260,37 @@ Widget SectionsPage({
             ),
           ),
           if (section7 != null)
-          Expanded(
-            child:
-            GestureDetector(
-              onTap: () {
-                Get.toNamed(routing_section7!);
-              },
-              child: Container(
-                margin: const EdgeInsets.all(5.0),
-                width:double.infinity,
-                decoration: const BoxDecoration(
-                  color: salmon,
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(15.0),
-                  ),
-                ),
-                child: Center(
-                  child: Text(section7,
-                    style: TextStyle(
-                      fontFamily: 'League Spartan',
-                      fontWeight: FontWeight.w300,
-                      fontSize: 26,
-                      color: Colors.white,
+            Expanded(
+              child: GestureDetector(
+                onTap: () {
+                  Get.toNamed(routing_section7!);
+                },
+                child: Container(
+                  margin: const EdgeInsets.all(5.0),
+                  width: double.infinity,
+                  decoration: const BoxDecoration(
+                    color: salmon,
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(15.0),
                     ),
-                    maxLines: 2,
-                    textAlign: TextAlign.center,
+                  ),
+                  child: Center(
+                    child: Text(
+                      section7,
+                      style: TextStyle(
+                        fontFamily: 'League Spartan',
+                        fontWeight: FontWeight.w300,
+                        fontSize: 26,
+                        color: Colors.white,
+                      ),
+                      maxLines: 2,
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                 ),
               ),
             ),
-          ) ,
         ],
-
       ),
     ),
   );

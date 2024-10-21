@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import 'app_status.dart';
 
 class AppStateController extends GetxController {
-
   var state = AppState.idle.obs;
+  var errorMsg = ''.obs;
 
   void startLoading() {
     state.value = AppState.loading;
@@ -15,8 +15,8 @@ class AppStateController extends GetxController {
     state.value = AppState.success;
   }
 
-  void setError() {
+  void setError(String msg) {
     state.value = AppState.error;
+    errorMsg.value = msg;
   }
-
 }

@@ -2,41 +2,49 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mmarket_interfaces/core/app_routers.dart';
 import 'package:mmarket_interfaces/core/manage_app_state/app_status.dart';
+import 'package:mmarket_interfaces/core/snackbar.dart';
 import 'package:mmarket_interfaces/widgets_componants/formdata.dart';
 import '../../../constants/colors.dart';
 import '../controllers/signup_controller.dart';
 
 class Signup extends StatefulWidget {
-   Signup({super.key});
+  Signup({super.key});
 
   @override
   State<Signup> createState() => _SignupState();
 }
 
 class _SignupState extends State<Signup> {
-   final TextEditingController fullName =TextEditingController();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
 
-   final TextEditingController emailAddress =TextEditingController();
+  final TextEditingController fullName = TextEditingController();
 
-   final TextEditingController mobileNumber =TextEditingController();
+  final TextEditingController emailAddress = TextEditingController();
 
-   final TextEditingController dateOfBirth =TextEditingController();
+  final TextEditingController mobileNumber = TextEditingController();
 
-   final TextEditingController password =TextEditingController();
+  final TextEditingController dateOfBirth = TextEditingController();
 
-   final TextEditingController confirmPassword =TextEditingController();
+  final TextEditingController password = TextEditingController();
 
-   final _formKey = GlobalKey<FormState>();
+  final TextEditingController confirmPassword = TextEditingController();
 
-   final AuthSignUpController authSignUpController=AuthSignUpController();
+  final _formKey = GlobalKey<FormState>();
 
-    bool obscureText=true;
+  final AuthSignUpController authSignUpController = AuthSignUpController();
 
-   @override
+  bool obscureText = true;
+
+  @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       appBar: AppBar(
-        title: const Text('Create Account',
+        title: const Text(
+          'Create Account',
           style: TextStyle(
             fontFamily: 'Poppins',
             fontWeight: FontWeight.w600,
@@ -48,22 +56,32 @@ class _SignupState extends State<Signup> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
-        child:
-        Obx((){
-          if(authSignUpController.appStateController.state.value==AppState.loading )
-            {
-            return Center(child: CircularProgressIndicator(
+        child: Obx(() {
+          if (authSignUpController.appStateController.state.value ==
+              AppState.loading) {
+            return Center(
+                child: CircularProgressIndicator(
               color: salmon,
               backgroundColor: Terracotta,
             ));
-            }
-          return  Form(
+          }
+          if (authSignUpController.appStateController.state.value ==
+              AppState.error) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+                AppSnackBar(
+                context: context,
+                msg: authSignUpController.appStateController.errorMsg
+                    .toString());
+            });
+          }
+          return Form(
             key: _formKey,
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text('Full name',
+                  const Text(
+                    'Full name',
                     style: TextStyle(
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w500,
@@ -71,7 +89,9 @@ class _SignupState extends State<Signup> {
                       color: Black,
                     ),
                   ),
-                  const SizedBox(height: 5.0,),
+                  const SizedBox(
+                    height: 5.0,
+                  ),
                   FormDataitem(
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -84,9 +104,12 @@ class _SignupState extends State<Signup> {
                     hintext: 'Maya ghajghouj',
                     fontcolor: salmon,
                   ),
-                  const SizedBox(height: 10.0,),
+                  const SizedBox(
+                    height: 10.0,
+                  ),
 
-                  const Text('Email',
+                  const Text(
+                    'Email',
                     style: TextStyle(
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w500,
@@ -94,7 +117,9 @@ class _SignupState extends State<Signup> {
                       color: Black,
                     ),
                   ),
-                  const SizedBox(height: 5.0,),
+                  const SizedBox(
+                    height: 5.0,
+                  ),
                   FormDataitem(
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -107,9 +132,12 @@ class _SignupState extends State<Signup> {
                     hintext: 'example@example.com',
                     fontcolor: salmon,
                   ),
-                  const SizedBox(height: 10.0,),
+                  const SizedBox(
+                    height: 10.0,
+                  ),
 
-                  const Text('Mobile Number',
+                  const Text(
+                    'Mobile Number',
                     style: TextStyle(
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w500,
@@ -117,7 +145,9 @@ class _SignupState extends State<Signup> {
                       color: Black,
                     ),
                   ),
-                  const SizedBox(height: 5.0,),
+                  const SizedBox(
+                    height: 5.0,
+                  ),
                   FormDataitem(
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -130,9 +160,12 @@ class _SignupState extends State<Signup> {
                     hintext: '+ 123 456 789',
                     fontcolor: salmon,
                   ),
-                  const SizedBox(height: 10.0,),
+                  const SizedBox(
+                    height: 10.0,
+                  ),
 
-                  const Text('Date of birth',
+                  const Text(
+                    'Date of birth',
                     style: TextStyle(
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w500,
@@ -140,7 +173,9 @@ class _SignupState extends State<Signup> {
                       color: Black,
                     ),
                   ),
-                  const SizedBox(height: 5.0,),
+                  const SizedBox(
+                    height: 5.0,
+                  ),
                   FormDataitem(
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -153,9 +188,12 @@ class _SignupState extends State<Signup> {
                     hintext: 'DD / MM /YYY',
                     fontcolor: salmon,
                   ),
-                  const SizedBox(height: 10.0,),
+                  const SizedBox(
+                    height: 10.0,
+                  ),
 
-                  const Text('Password',
+                  const Text(
+                    'Password',
                     style: TextStyle(
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w500,
@@ -163,7 +201,9 @@ class _SignupState extends State<Signup> {
                       color: Black,
                     ),
                   ),
-                  const SizedBox(height: 5.0,),
+                  const SizedBox(
+                    height: 5.0,
+                  ),
                   FormDataitem(
                       validator: (value) {
                         if (value == null || value.isEmpty) {
@@ -176,25 +216,24 @@ class _SignupState extends State<Signup> {
                       keyboardtype: TextInputType.text,
                       hintext: '●●●●●●●●',
                       fontcolor: salmon,
-                      suffixicon:  IconButton(
+                      suffixicon: IconButton(
                         onPressed: () {
-
-                         setState(() {
-                           obscureText = !obscureText;
-                         });
+                          setState(() {
+                            obscureText = !obscureText;
+                          });
                         },
                         icon: Icon(
-                          color: salmon,
-                          obscureText ?
-                            Icons.remove_red_eye_rounded
-                              :
-                              Icons.not_interested
-                        ),
-                      )
+                            color: salmon,
+                            obscureText
+                                ? Icons.remove_red_eye_rounded
+                                : Icons.not_interested),
+                      )),
+                  const SizedBox(
+                    height: 10.0,
                   ),
-                  const SizedBox(height: 10.0,),
 
-                  const Text('Confirm Password',
+                  const Text(
+                    'Confirm Password',
                     style: TextStyle(
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w500,
@@ -202,42 +241,43 @@ class _SignupState extends State<Signup> {
                       color: Black,
                     ),
                   ),
-                  const SizedBox(height: 5.0,),
-                  FormDataitem(
-                      validator: (value) {
-                        if (value == null || value.isEmpty )
-                        {
-                          return 'Please confirm your password';
-                        }
-                        if(value!=password.text)
-                        {
-                          return 'Passwords do not match';
-                        }
-                        return null;
-                      },
-                      controller: confirmPassword,
-                      keyboardtype: TextInputType.text,
-                      hintext: '●●●●●●●●',
-                      fontcolor: salmon,
-                      suffixicon: IconButton(
-                        onPressed: () {
-
-                          setState(() {
-                            obscureText = !obscureText;
-                          });
-                        },
-                        icon: Icon(
-                            color: salmon,
-                            obscureText ?
-                            Icons.remove_red_eye_rounded
-                                :
-                            Icons.not_interested
-                        ),
-                      ),
+                  const SizedBox(
+                    height: 5.0,
                   ),
-                  const SizedBox(height: 10.0,),
+                  FormDataitem(
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please confirm your password';
+                      }
+                      if (value != password.text) {
+                        return 'Passwords do not match';
+                      }
+                      return null;
+                    },
+                    controller: confirmPassword,
+                    keyboardtype: TextInputType.text,
+                    hintext: '●●●●●●●●',
+                    fontcolor: salmon,
+                    suffixicon: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          obscureText = !obscureText;
+                        });
+                      },
+                      icon: Icon(
+                          color: salmon,
+                          obscureText
+                              ? Icons.remove_red_eye_rounded
+                              : Icons.not_interested),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10.0,
+                  ),
+                  // this Center is for term of use and policy
                   const Center(
-                    child: Text('By continuing, you agree to ',
+                    child: Text(
+                      'By continuing, you agree to ',
                       style: TextStyle(
                         fontSize: 13,
                         fontWeight: FontWeight.w300,
@@ -251,9 +291,9 @@ class _SignupState extends State<Signup> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       TextButton(
-                        onPressed: () {
-                        },
-                        child: const Text('Terms of Use ',
+                        onPressed: () {},
+                        child: const Text(
+                          'Terms of Use ',
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
@@ -262,7 +302,8 @@ class _SignupState extends State<Signup> {
                           ),
                         ),
                       ),
-                      const Text('and',
+                      const Text(
+                        'and',
                         style: TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.w300,
@@ -271,9 +312,9 @@ class _SignupState extends State<Signup> {
                         ),
                       ),
                       TextButton(
-                        onPressed: () {
-                        },
-                        child: const Text('Privacy Policy',
+                        onPressed: () {},
+                        child: const Text(
+                          'Privacy Policy',
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
@@ -294,27 +335,26 @@ class _SignupState extends State<Signup> {
                         color: salmon,
                       ),
                       child: MaterialButton(
-                        onPressed: () async
-                        {
-                          if(_formKey.currentState!.validate())
-                          {
-                            await  authSignUpController.authSignUpFunction(
+                        onPressed: () async {
+                          if (_formKey.currentState!.validate()) {
+                            await authSignUpController
+                                .emailPasswordAuthSignUpFunction(
                               context: context,
                               fullName: fullName.text,
                               emailAddress: emailAddress.text,
                               mobileNumber: mobileNumber.text,
                               dateOfBirth: dateOfBirth.text,
-                              password: password.text,);
+                              password: password.text,
+                            );
                           }
-
                         },
-                        child: const Text('Sign Up',
+                        child: const Text(
+                          'Sign Up',
                           style: TextStyle(
-                            fontWeight:FontWeight.w600 ,
-                            fontSize:20 ,
-                            fontFamily:'Poppins' ,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 20,
+                            fontFamily: 'Poppins',
                             color: Terracotta,
-
                           ),
                         ),
                       ),
@@ -323,7 +363,8 @@ class _SignupState extends State<Signup> {
                   // this column for sign up process by facebook | google
                   Column(
                     children: [
-                      const Text('or sign up with',
+                      const Text(
+                        'or sign up with',
                         style: TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.w300,
@@ -336,18 +377,16 @@ class _SignupState extends State<Signup> {
                         children: [
                           // facebook signup
                           IconButton(
-                              onPressed: (){},
+                              onPressed: () {},
                               icon: const Icon(
                                 Icons.facebook_outlined,
-                              )
-                          ),
+                              )),
                           // google signup
                           IconButton(
-                              onPressed: (){},
+                              onPressed: () {},
                               icon: const Icon(
                                 Icons.alternate_email,
-                              )
-                          ),
+                              )),
                         ],
                       ),
                     ],
@@ -356,7 +395,8 @@ class _SignupState extends State<Signup> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text('Already have an account? ',
+                      const Text(
+                        'Already have an account? ',
                         style: TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.w300,
@@ -368,7 +408,8 @@ class _SignupState extends State<Signup> {
                         onPressed: () {
                           Get.toNamed(Routes.Login);
                         },
-                        child: const Text('Log In',
+                        child: const Text(
+                          'Log In',
                           style: TextStyle(
                             fontSize: 13,
                             fontWeight: FontWeight.w400,
@@ -380,13 +421,10 @@ class _SignupState extends State<Signup> {
                     ],
                   ),
                 ],
-
               ),
             ),
           );
-        }
-
-        ),
+        }),
       ),
     );
   }

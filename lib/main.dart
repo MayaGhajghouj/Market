@@ -3,14 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mmarket_interfaces/core/app_routers.dart';
 
-void main() async{
+void main() async {
   try {
     WidgetsFlutterBinding.ensureInitialized();
-    await Firebase.initializeApp(
-    );
+    await Firebase.initializeApp();
     print('succes in firebase =====================');
-  }
-  catch (e) {
+  } catch (e) {
     print("Failed to initialize Firebase: $e");
   }
   runApp(const MyApp());
@@ -35,7 +33,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      initialRoute: Routes.Signup,
+      initialRoute: Routes.Login,
       getPages: AppPages.Pages,
     );
   }
