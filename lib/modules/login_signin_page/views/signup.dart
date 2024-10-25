@@ -5,7 +5,7 @@ import 'package:mmarket_interfaces/core/manage_app_state/app_status.dart';
 import 'package:mmarket_interfaces/core/snackbar.dart';
 import 'package:mmarket_interfaces/widgets_componants/formdata.dart';
 import '../../../constants/colors.dart';
-import '../controllers/signup_controller.dart';
+import '../controllers/password&email_signup_controller.dart';
 
 class Signup extends StatefulWidget {
   Signup({super.key});

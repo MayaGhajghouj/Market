@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mmarket_interfaces/core/manage_app_state/app_state_controller.dart';
 
+import '../../../core/snackbar.dart';
+
 void showEmailNotReceivedDialog(
     {required BuildContext context, required User user}) {
-  final AppStateController appStateController = Get.put(AppStateController());
+  final AppStateController appStateController = Get.find();
   showDialog(
     context: context,
     builder: (BuildContext context) {
@@ -25,8 +27,17 @@ void showEmailNotReceivedDialog(
             child: const Text('Resend Email'),
             onPressed: () async {
               appStateController.startLoading();
-              // Call your function to resend the email here
-              await user.sendEmailVerification();
+              await user.sendEmailVerification().then((_) {
+                appStateController.setSuccess();
+                print('\nResent Verification email .\n');
+                AppSnackBar(context: context, msg: 'Verification email resent');
+                Future.delayed(const Duration(seconds: 4), () {});
+                Get.back();
+              }).catchError((e) {
+                appStateController.setError('Cant resend verification email');
+                print('\nError in resending nVerification email $e\n .\n');
+                // AppSnackBar(context: context, msg: 'Verification email didnt send');
+              });
             },
           ),
         ],

@@ -6,11 +6,14 @@ import 'package:mmarket_interfaces/core/app_routers.dart';
 import 'package:mmarket_interfaces/core/snackbar.dart';
 
 import '../../../core/manage_app_state/app_state_controller.dart';
+import '../../../models/user_model.dart';
 
 class AuthSignUpController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  final AppStateController appStateController = Get.put(AppStateController());
+  final AppStateController _appStateController = Get.put(AppStateController());
+  AppStateController get appStateController => _appStateController;
+
 
   Future<void> emailPasswordAuthSignUpFunction({
     required String fullName,
@@ -21,35 +24,40 @@ class AuthSignUpController {
     required BuildContext context,
   }) async {
     try {
-      appStateController.startLoading();
+      _appStateController.startLoading();
       final credentalUser = await _auth.createUserWithEmailAndPassword(
         email: emailAddress,
         password: password,
       );
+      // the process above just take the email and password and store it in the User obj
+      // but all aditional values still want to gfill it because they take null value
 
       User? user = credentalUser.user;
       print('\n====== $user ========\n');
 
-      if (user != null) // Create a new user with his information
+      if (user != null) // if the (password & email are vaild & the user is created in firebase) then he will enter
       {
-        final userData = <String, dynamic>{
-          "fullName": fullName,
-          "emailAddress": emailAddress,
-          "mobileNumber": mobileNumber,
-          "dateOfBirth": dateOfBirth,
-        };
+        final UserModel userModel = UserModel(
+            id: user.uid,
+            displayName: user.displayName?? fullName,// the null value will be in the displayName by default
+            email: user.email ?? emailAddress,
+            phone: user.phoneNumber ?? mobileNumber,
+            birthday: dateOfBirth,
+            password: password, );
+         // convert the model to map cause to store in the firestore
+         final userdata= userModel.toMap();
 
         // Add a new document with a generated ID
         await _firestore
             .collection("usersData")
             .doc(user.uid)
-            .set(userData)
+            .set(userdata)
             .then((_) {
           print('\ndata is added to firestore collection USERDATA.\n');
-          appStateController.setSuccess();
+          _appStateController.setSuccess();
           AppSnackBar(context: context, msg: 'Signup Success');
         }).catchError((e) {
-          appStateController.setError('SignUp failed');
+          _appStateController.setError('SignUp failed');
           print('\nError in adding data to firestore $e \n');
         });
 
@@ -62,14 +70,14 @@ class AuthSignUpController {
             Get.toNamed(Routes.Login);
           });
         }).catchError((e) {
-          appStateController.setError('Cant send verification email');
+          _appStateController.setError('Cant send verification email');
           print('\nError in sending nVerification email $e\n .\n');
           // AppSnackBar(context: context, msg: 'Verification email didnt send');
         });
       }
     } //try
     on FirebaseAuthException catch (e) {
-      appStateController.setError(
+      _appStateController.setError(
         e.code == 'weak-password'
             ? 'The password provided is too weak.'
             : e.code == 'email-already-in-use'
@@ -79,8 +87,8 @@ class AuthSignUpController {
                     : 'Error: $e',
       );
     } catch (e) {
-      appStateController.setError('Error in signup: $e');
-      AppSnackBar(context: context, msg: appStateController.errorMsg.value);
+      _appStateController.setError('Error in signup: $e');
+      AppSnackBar(context: context, msg: _appStateController.errorMsg.value);
       print('Error in signup \n $e');
     }
   }

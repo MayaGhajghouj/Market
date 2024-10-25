@@ -23,14 +23,17 @@ class AuthSignInController extends GetxController {
       );
 
       User? user = credentialUser.user;
-      if (user != null) {
+      if (user != null)
+      {
         // Check if the email is verified
-        if (user.emailVerified) {
+        if (user.emailVerified)
+        {
           appStateController.setSuccess();
           print('\nUser logged in successfully\n');
           AppSnackBar(context: context, msg: 'User logged in successfully');
           Get.toNamed(Routes.WelcomeBackPage);
-        } else {
+        } else
+        {
           appStateController.setError('Email did not verified');
           print('\nEmail did not verified \n');
           showEmailNotReceivedDialog(context: context, user: user);
