@@ -5,7 +5,7 @@ class UserModel {
   String phone;
   String birthday;
   String? photoUrl;
-  String password;
+  String? password;
 
   UserModel({
     required this.id,
@@ -14,7 +14,7 @@ class UserModel {
     required this.phone,
     required this.birthday,
     this.photoUrl,
-    required this.password,
+     this.password,
   });
 
   // Convert a UserModel instance to a Map for Firestore

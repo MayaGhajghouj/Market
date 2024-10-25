@@ -13,11 +13,13 @@ import 'package:mmarket_interfaces/modules/profile_pages/views/profile.dart';
 import 'package:mmarket_interfaces/modules/reviewpage/views/review_page.dart';
 import 'package:mmarket_interfaces/modules/welcomebackpage/views/welcome_back_page.dart';
 
+import '../modules/login_signin_page/views/google_signup_additional_info.dart';
+
 class Routes {
   static const ProductDes_DiningTable = '/ProductDes_DiningTable';
   static const DiningRoomHomePage = '/DiningRoomHomePage';
   static const SectionsLivingroom = '/SectionsLivingroom';
-  static const SectionsDiningroom ='/SectionsDiningroom';
+  static const SectionsDiningroom = '/SectionsDiningroom';
   static const ProductDes_Sofa = '/ProductDes_Sofa';
   static const livingroom_HomePage = '/livingroom_HomePage';
   static const EditProfile = '/EditProfile';
@@ -25,9 +27,9 @@ class Routes {
   static const MyOrders = '/MyOrders';
   static const ReviewPage = '/ReviewPage';
   static const WelcomeBackPage = '/WelcomeBackPage';
-  static const Login='/Login';
-  static const Signup='/Signup';
-
+  static const Login = '/Login';
+  static const Signup = '/Signup';
+  static const GoogleSignupAdditionalInfo = '/GoogleSignupAdditionalInfo';
 }
 
 class AppPages {
@@ -78,11 +80,15 @@ class AppPages {
     ),
     GetPage(
       name: Routes.Login,
-      page: () =>  Login(),
+      page: () => Login(),
     ),
     GetPage(
       name: Routes.Signup,
       page: () => Signup(),
+    ),
+    GetPage(
+      name: Routes.GoogleSignupAdditionalInfo,
+      page: () => GoogleSignupAdditionalInfo(),
     ),
   ];
 }
