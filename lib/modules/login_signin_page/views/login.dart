@@ -5,6 +5,7 @@ import 'package:mmarket_interfaces/core/app_routers.dart';
 import 'package:mmarket_interfaces/core/manage_app_state/app_status.dart';
 import 'package:mmarket_interfaces/core/app_snackbar.dart';
 import 'package:mmarket_interfaces/widgets_componants/formdata.dart';
+import '../controllers/google_login_signup_controller.dart';
 import '../controllers/password&email_login_controller.dart';
 
 class Login extends StatefulWidget {
@@ -22,8 +23,10 @@ class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
 
   final AuthSignInController authSignInController = AuthSignInController();
-  
+
   bool obscureText = true;
+
+  final GoogleLoginSignupControlle googleSignIn = GoogleLoginSignupControlle();
 
   @override
   Widget build(BuildContext context) {
@@ -163,8 +166,7 @@ class _LoginState extends State<Login> {
                       ),
                       child: MaterialButton(
                         onPressed: () async {
-                          if (_formKey.currentState!.validate()) 
-                          {
+                          if (_formKey.currentState!.validate()) {
                             await authSignInController
                                 .passwordEmailauthLoginFunction(
                                     emailAddress: emailAddress.text,
@@ -212,13 +214,18 @@ class _LoginState extends State<Login> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
+                          // facebook login
                           IconButton(
                               onPressed: () {},
                               icon: const Icon(
                                 Icons.facebook_outlined,
                               )),
+                          // google login
                           IconButton(
-                              onPressed: () {},
+                              onPressed: () async {
+                                await googleSignIn.signUpSignInWithGoogle(
+                                    context: context);
+                              },
                               icon: const Icon(
                                 Icons.alternate_email,
                               )),

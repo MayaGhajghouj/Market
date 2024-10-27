@@ -76,7 +76,7 @@ class GoogleLoginSignupControlle extends GetxController {
 
       // Save user details to Firestore
       await FirebaseFirestore.instance
-          .collection('users')
+          .collection('usersData')
           .doc(user.id)
           .set(user.toMap());
     }

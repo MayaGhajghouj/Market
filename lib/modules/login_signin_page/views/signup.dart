@@ -5,6 +5,7 @@ import 'package:mmarket_interfaces/core/manage_app_state/app_status.dart';
 import 'package:mmarket_interfaces/core/app_snackbar.dart';
 import 'package:mmarket_interfaces/widgets_componants/formdata.dart';
 import '../../../constants/colors.dart';
+import '../controllers/google_login_signup_controller.dart';
 import '../controllers/password&email_signup_controller.dart';
 
 class Signup extends StatefulWidget {
@@ -39,6 +40,8 @@ class _SignupState extends State<Signup> {
 
   bool obscureText = true;
 
+  final GoogleLoginSignupControlle googleSignup = GoogleLoginSignupControlle();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,10 +71,10 @@ class _SignupState extends State<Signup> {
           if (authSignUpController.appStateController.state.value ==
               AppState.error) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
-                AppSnackBar(
-                context: context,
-                msg: authSignUpController.appStateController.errorMsg
-                    .toString());
+              AppSnackBar(
+                  context: context,
+                  msg: authSignUpController.appStateController.errorMsg
+                      .toString());
             });
           }
           return Form(
@@ -383,7 +386,11 @@ class _SignupState extends State<Signup> {
                               )),
                           // google signup
                           IconButton(
-                              onPressed: () {},
+                              onPressed: () async
+                              {
+                                await googleSignup.signUpSignInWithGoogle(
+                                    context: context);
+                              },
                               icon: const Icon(
                                 Icons.alternate_email,
                               )),
