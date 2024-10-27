@@ -6,8 +6,7 @@ import '../../../constants/colors.dart';
 import '../../../widgets_componants/formdata.dart';
 
 class GoogleSignupAdditionalInfo extends StatelessWidget {
-  GoogleSignupAdditionalInfo(
-      {super.key, required GoogleSignInAccount googleUser});
+  GoogleSignupAdditionalInfo({super.key, GoogleSignInAccount? googleUser});
 
   final TextEditingController mobileNumber = TextEditingController();
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mmarket_interfaces/core/app_routers.dart';
 import 'package:mmarket_interfaces/core/manage_app_state/app_status.dart';
-import 'package:mmarket_interfaces/core/snackbar.dart';
+import 'package:mmarket_interfaces/core/app_snackbar.dart';
 import 'package:mmarket_interfaces/widgets_componants/formdata.dart';
 import '../../../constants/colors.dart';
 import '../controllers/password&email_signup_controller.dart';

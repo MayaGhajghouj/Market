@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:mmarket_interfaces/core/app_routers.dart';
 import 'package:mmarket_interfaces/core/manage_app_state/app_state_controller.dart';
-import 'package:mmarket_interfaces/core/snackbar.dart';
+import 'package:mmarket_interfaces/core/app_snackbar.dart';
 
 import '../widget_componants/show_alert_dialog.dart';
 

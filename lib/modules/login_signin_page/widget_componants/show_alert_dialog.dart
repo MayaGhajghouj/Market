@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mmarket_interfaces/core/manage_app_state/app_state_controller.dart';
 
-import '../../../core/snackbar.dart';
+import '../../../core/app_snackbar.dart';
 
 void showEmailNotReceivedDialog(
     {required BuildContext context, required User user}) {

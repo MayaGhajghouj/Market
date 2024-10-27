@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:mmarket_interfaces/core/app_routers.dart';
-import 'package:mmarket_interfaces/core/snackbar.dart';
+import 'package:mmarket_interfaces/core/app_snackbar.dart';
 
 import '../../../models/user_model.dart';
 
@@ -36,28 +36,13 @@ class GoogleLoginSignupControlle {
           await FirebaseFirestore.instance.collection('users').doc(uId).get();
       if (!userDoc.exists) {
         // User is new
-      //  Get.toNamed(Routes.GoogleSignupAdditionalInfo(googleUser));
-
-        // Create the user model and save to Firestore
-        // UserModel newUser = UserModel(
-        //   id: uId,
-        //   displayName: googleUser.displayName ?? 'user',
-        //   email: googleUser.email,
-        //   phone: mobileNumber,
-        //   birthday: dateOfBirth,
-        //   photoUrl: googleUser.photoUrl,
-        //   password: '',
-        // );
-
-        // await FirebaseFirestore.instance.collection('users').doc(uId).set(newUser.toMap());
-
-        // Navigate to additional information screen if required
+        //  Get.toNamed(Routes.GoogleSignupAdditionalInfo(googleUser));
       } else {
         // User already exists, navigate to the home screen
         Get.toNamed(Routes.WelcomeBackPage);
       }
     } catch (e) {
-      print('error in signin with google');
+      print('\n\nerror in signin with google\n\n');
       AppSnackBar(context: context, msg: 'error in signin with google');
     }
   }
@@ -82,4 +67,12 @@ class GoogleLoginSignupControlle {
         .doc(user.id)
         .set(user.toMap());
   }
-}
+}// lastt things have to do : 
+
+
+/**
+ * process the addditional info by send google user and all info to fire store
+ * i want to manage the state of app 
+ * i want to test the errors and complete catcch error 
+ * 
+ */

@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:mmarket_interfaces/core/app_routers.dart';
-import 'package:mmarket_interfaces/core/snackbar.dart';
+import 'package:mmarket_interfaces/core/app_snackbar.dart';
 
 import '../../../core/manage_app_state/app_state_controller.dart';
 import '../../../models/user_model.dart';
@@ -45,13 +45,11 @@ class AuthSignUpController {
             birthday: dateOfBirth,
             password: password, );
          // convert the model to map cause to store in the firestore
-         final userdata= userModel.toMap();
-
         // Add a new document with a generated ID
         await _firestore
             .collection("usersData")
             .doc(user.uid)
-            .set(userdata)
+            .set(userModel.toMap())
             .then((_) {
           print('\ndata is added to firestore collection USERDATA.\n');
           _appStateController.setSuccess();
