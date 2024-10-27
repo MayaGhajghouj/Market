@@ -3,14 +3,19 @@ import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../constants/colors.dart';
+import '../../../core/app_snackbar.dart';
+import '../../../core/manage_app_state/app_status.dart';
 import '../../../widgets_componants/formdata.dart';
+import '../controllers/google_login_signup_controller.dart';
 
 class GoogleSignupAdditionalInfo extends StatelessWidget {
-  GoogleSignupAdditionalInfo({super.key, GoogleSignInAccount? googleUser});
+  GoogleSignupAdditionalInfo({super.key});
 
   final TextEditingController mobileNumber = TextEditingController();
 
   final TextEditingController dateOfBirth = TextEditingController();
+
+  final GoogleLoginSignupControlle myGoogleuser = Get.find();
 
   final _formKey = GlobalKey<FormState>();
 
@@ -32,26 +37,21 @@ class GoogleSignupAdditionalInfo extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Obx(() {
-          // if (authSignUpController.appStateController.state.value ==
-          //     AppState.loading)
-          //     {
-          //   return Center(
-          //       child: CircularProgressIndicator(
-          //     color: salmon,
-          //     backgroundColor: Terracotta,
-          //   ));
-          // }
+          if (myGoogleuser.appStateController.state.value == AppState.loading) {
+            return Center(
+                child: CircularProgressIndicator(
+              color: salmon,
+              backgroundColor: Terracotta,
+            ));
+          }
 
-          // if (authSignUpController.appStateController.state.value ==
-          //     AppState.error)
-          //     {
-          //   WidgetsBinding.instance.addPostFrameCallback((_) {
-          //       AppSnackBar(
-          //       context: context,
-          //       msg: authSignUpController.appStateController.errorMsg
-          //           .toString());
-          //   });
-          // }
+          if (myGoogleuser.appStateController.state.value == AppState.error) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              AppSnackBar(
+                  context: context,
+                  msg: myGoogleuser.appStateController.errorMsg.toString());
+            });
+          }
           return Form(
             key: _formKey,
             child: SingleChildScrollView(
@@ -122,7 +122,10 @@ class GoogleSignupAdditionalInfo extends StatelessWidget {
                       ),
                       child: MaterialButton(
                         onPressed: () async {
-                          if (_formKey.currentState!.validate()) {}
+                          if (_formKey.currentState!.validate()) {
+                            myGoogleuser.saveUserToFirestore(
+                                mobileNumber.text, dateOfBirth.text);
+                          }
                         },
                         child: const Text(
                           'Sign Up',

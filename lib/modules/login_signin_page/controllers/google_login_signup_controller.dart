@@ -5,19 +5,26 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:mmarket_interfaces/core/app_routers.dart';
 import 'package:mmarket_interfaces/core/app_snackbar.dart';
 
+import '../../../core/manage_app_state/app_state_controller.dart';
 import '../../../models/user_model.dart';
 
-class GoogleLoginSignupControlle {
+class GoogleLoginSignupControlle extends GetxController {
+  //  if user is new in app and he signup with google i will store his data here
+  final Rx<GoogleSignInAccount?> myGoogleUser = Rx<GoogleSignInAccount?>(null);
+  final AppStateController appStateController = Get.find();
+
   Future<void> signUpSignInWithGoogle({
     required context,
   }) async {
     try {
-// Trigger the authentication flow
+      appStateController.startLoading();
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
       // if user canceled the sign-in
       if (googleUser == null) {
         return;
       }
+
       // Obtain the auth details from the request
       final GoogleSignInAuthentication? googleAuth =
           await googleUser.authentication;
@@ -27,45 +34,52 @@ class GoogleLoginSignupControlle {
         accessToken: googleAuth?.accessToken,
         idToken: googleAuth?.idToken,
       );
+
       // Sign in to Firebase with Google credentials
       UserCredential userCredential =
           await FirebaseAuth.instance.signInWithCredential(credential);
       String uId = userCredential.user!.uid;
+
       // Check if the user is new by checking Firestore
       DocumentSnapshot userDoc =
           await FirebaseFirestore.instance.collection('users').doc(uId).get();
       if (!userDoc.exists) {
         // User is new
-        //  Get.toNamed(Routes.GoogleSignupAdditionalInfo(googleUser));
+        Get.toNamed(Routes.GoogleSignupAdditionalInfo);
+        appStateController.setSuccess();
+        // take his ingo from gooogle account
+        myGoogleUser.value = googleUser;
       } else {
         // User already exists, navigate to the home screen
         Get.toNamed(Routes.WelcomeBackPage);
+        appStateController.setSuccess();
       }
     } catch (e) {
-      print('\n\nerror in signin with google\n\n');
-      AppSnackBar(context: context, msg: 'error in signin with google');
+      print('\n\nerror in auth with google \n $e\n');
+      appStateController.setError('error in auth with google');
     }
   }
 
   //  if the user is new and he signup with email .. he will enter additional information
 
-  void saveUserToFirestore(
-      GoogleSignInAccount googleUser, String phone, String birthday) async {
-    UserModel user = UserModel(
-      id: googleUser.id, // Use Google ID as the document ID
-      displayName: googleUser.displayName ?? 'No Name',
-      email: googleUser.email,
-      phone: phone,
-      birthday: birthday,
-      photoUrl: googleUser.photoUrl,
-      password: '',
-    );
+  void saveUserToFirestore(String phone, String birthday) async {
+    if (myGoogleUser.value != null) {
+      UserModel user = UserModel(
+        id: myGoogleUser.value!.id, // Use Google ID as the document ID
+        displayName: myGoogleUser.value!.displayName ?? 'No Name',
+        email: myGoogleUser.value!.email,
+        phone: phone,
+        birthday: birthday,
+        photoUrl: myGoogleUser.value!.photoUrl,
+        password: '',
+      );
 
-    // Save user details to Firestore
-    await FirebaseFirestore.instance
-        .collection('users')
-        .doc(user.id)
-        .set(user.toMap());
+      // Save user details to Firestore
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.id)
+          .set(user.toMap());
+    }
   }
 }// lastt things have to do : 
 

@@ -22,7 +22,9 @@ class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
 
   final AuthSignInController authSignInController = AuthSignInController();
+  
   bool obscureText = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

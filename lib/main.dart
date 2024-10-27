@@ -3,11 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mmarket_interfaces/core/app_routers.dart';
 
+import 'core/manage_app_state/app_state_controller.dart';
+
 void main() async {
   try {
     WidgetsFlutterBinding.ensureInitialized();
     await Firebase.initializeApp();
     print('succes in firebase =====================');
+      Get.put(AppStateController()); // i will use Get.find if i need in my app
+
   } catch (e) {
     print("Failed to initialize Firebase: $e");
   }

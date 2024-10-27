@@ -11,9 +11,8 @@ import '../../../models/user_model.dart';
 class AuthSignUpController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  final AppStateController _appStateController = Get.put(AppStateController());
+  final AppStateController _appStateController = Get.find();
   AppStateController get appStateController => _appStateController;
-
 
   Future<void> emailPasswordAuthSignUpFunction({
     required String fullName,
@@ -35,16 +34,19 @@ class AuthSignUpController {
       User? user = credentalUser.user;
       print('\n====== $user ========\n');
 
-      if (user != null) // if the (password & email are vaild & the user is created in firebase) then he will enter
+      if (user !=
+          null) // if the (password & email are vaild & the user is created in firebase) then he will enter
       {
         final UserModel userModel = UserModel(
-            id: user.uid,
-            displayName: user.displayName?? fullName,// the null value will be in the displayName by default
-            email: user.email ?? emailAddress,
-            phone: user.phoneNumber ?? mobileNumber,
-            birthday: dateOfBirth,
-            password: password, );
-         // convert the model to map cause to store in the firestore
+          id: user.uid,
+          displayName: user.displayName ??
+              fullName, // the null value will be in the displayName by default
+          email: user.email ?? emailAddress,
+          phone: user.phoneNumber ?? mobileNumber,
+          birthday: dateOfBirth,
+          password: password,
+        );
+        // convert the model to map cause to store in the firestore
         // Add a new document with a generated ID
         await _firestore
             .collection("usersData")
