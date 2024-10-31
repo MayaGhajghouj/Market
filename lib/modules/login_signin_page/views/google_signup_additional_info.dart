@@ -1,7 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-
+import 'package:mmarket_interfaces/core/app_routers.dart';
 import '../../../constants/colors.dart';
 import '../../../core/app_snackbar.dart';
 import '../../../core/manage_app_state/app_status.dart';
@@ -15,7 +15,8 @@ class GoogleSignupAdditionalInfo extends StatelessWidget {
 
   final TextEditingController dateOfBirth = TextEditingController();
 
-  final GoogleLoginSignupControlle myGoogleuser = Get.find();
+  final GoogleLoginSignupControlle myGoogleuser =
+      Get.put(GoogleLoginSignupControlle());
 
   final _formKey = GlobalKey<FormState>();
 
@@ -123,8 +124,19 @@ class GoogleSignupAdditionalInfo extends StatelessWidget {
                       child: MaterialButton(
                         onPressed: () async {
                           if (_formKey.currentState!.validate()) {
-                            myGoogleuser.saveUserToFirestore(
-                                mobileNumber.text, dateOfBirth.text);
+                            if (FirebaseAuth.instance.currentUser != null) {
+                              await myGoogleuser.saveUserToFirestore(
+                                  mobileNumber.text, dateOfBirth.text);
+                            } else {
+                              // Handle the case where the user is not authenticated
+                              print(
+                                  "\n=======================User is not authenticated additional screen.==========================\n");
+                              // Optionally, redirect the user to the login screen
+                              Get.toNamed(Routes.Login);
+                              AppSnackBar(
+                                  context: context,
+                                  msg: 'User is not authenticated.');
+                            }
                           }
                         },
                         child: const Text(

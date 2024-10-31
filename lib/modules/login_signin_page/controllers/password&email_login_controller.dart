@@ -6,7 +6,8 @@ import 'package:mmarket_interfaces/core/app_snackbar.dart';
 
 import '../widget_componants/show_alert_dialog.dart';
 
-class AuthSignInController extends GetxController {
+class AuthSignInController extends GetxController
+ {
   final AppStateController appStateController = Get.find();
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
