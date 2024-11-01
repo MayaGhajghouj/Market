@@ -3,14 +3,16 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:mmarket_interfaces/core/app_routers.dart';
+import 'package:mmarket_interfaces/core/app_snackbar.dart';
 import '../../../core/manage_app_state/app_state_controller.dart';
 import '../../../models/user_model.dart';
 
 class GoogleLoginSignupControlle extends GetxController {
   //  if user is new in app and he signup with google i will store his data here
-  Rx<GoogleSignInAccount?> myGoogleUser = Rx<GoogleSignInAccount?>(null);
   final AppStateController appStateController = Get.find();
+  Rx<UserModel?> userModel = Rx(null);
 
+  /// this function is the logic of goole auth
   Future<void> signUpSignInWithGoogle({
     required context,
   }) async {
@@ -18,20 +20,15 @@ class GoogleLoginSignupControlle extends GetxController {
       appStateController.startLoading();
 
       //final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-      myGoogleUser.value = await GoogleSignIn().signIn();
+      final myGoogleUser = await GoogleSignIn().signIn();
 
-      // print(
-      //     "\n===============Assigned myGoogleUser:=======================\n $googleUser\n\n");
-      // // if user canceled the sign-in
-      if (myGoogleUser.value == null) {
+      if (myGoogleUser == null) {
         appStateController.setError('Google sign-in canceled.');
       }
-      //  myGoogleUser.value = googleUser;
-      print(
-          "\n===============Assigned myGoogleUser:=======================\n ${myGoogleUser.value}\n\n");
+
       // Obtain the auth details from the request
       final GoogleSignInAuthentication googleAuth =
-          await myGoogleUser.value!.authentication;
+          await myGoogleUser!.authentication;
 
       // Create a new credential
       final credential = GoogleAuthProvider.credential(
@@ -43,21 +40,28 @@ class GoogleLoginSignupControlle extends GetxController {
       final userCredential =
           await FirebaseAuth.instance.signInWithCredential(credential);
 
-      // String uId = userCredential.user!.uid;
-      String uId = myGoogleUser.value!.id;
-
-      // Check if the user is new by checking Firestore
+      /// Check if the user is new by checking Firestore
       await FirebaseFirestore.instance
           .collection('usersData')
-          .doc(uId)
+          .doc(userCredential.user!.uid) // firebase id creation
           .get()
-          .then((Value) 
-          {
+          .then((Value) {
         if (!Value.exists) {
           // User is new
+          userModel.value = UserModel(
+              id: userCredential.user!.uid,
+              displayName: userCredential.user!.displayName ?? 'name',
+              email: userCredential.user!.email ?? 'no email',
+              phone: 'not register yet',
+              birthday: 'not register yet');
+
+          print('========== uuser mode =====================');
+          print('${userModel.value}');
+          print('========== uuser mode =====================');
+          Get.put(this);
           Get.toNamed(Routes.GoogleSignupAdditionalInfo);
+
           appStateController.setSuccess();
-          // take his ingo from gooogle account
         } else {
           // User already exists, navigate to the home screen
           Get.toNamed(Routes.WelcomeBackPage);
@@ -72,35 +76,39 @@ class GoogleLoginSignupControlle extends GetxController {
 //====================================================================================================
   //  if the user is new and he signup with email .. he will enter additional information
 
-  Future<void> saveUserToFirestore(String phone, String birthday) async {
+  Future<void> saveUserToFirestore(
+    String phone,
+    String birthday,
+  ) async {
     appStateController.startLoading();
-    if (myGoogleUser.value != null) {
-      UserModel user = UserModel(
-        // id: myGoogleUser.value!.id, // Use Google ID as the document ID
-        id: myGoogleUser.value!.id,
-        displayName: myGoogleUser.value!.displayName ?? 'No Name',
-        email: myGoogleUser.value!.email,
-        phone: phone,
-        birthday: birthday,
-        photoUrl: myGoogleUser.value!.photoUrl,
-        password: '',
-      );
+    print('========== uuser mode =====================');
+    print('${userModel.value}');
+    print('========== uuser mode =====================');
+    Get.toNamed(Routes.GoogleSignupAdditionalInfo);
+    if (userModel.value !=
+        null) // this condition to sure that the user is login or signup
+    {
+      // upate use info by write the phone & birth
       // Save user details to Firestore
+
+      userModel.value!.phone = phone;
+      userModel.value!.birthday = birthday;
+
       await FirebaseFirestore.instance
           .collection('usersData')
-          .doc(user.id)
-          .set(user.toMap())
+          .add(userModel.value!.toMap())
           .then((_) {
         appStateController.setSuccess();
+        Get.toNamed(Routes.WelcomeBackPage);
       }).catchError((e) {
+        print('===========$e=======================');
         appStateController.setError('error in save user data to firestore');
       });
     } else {
       appStateController.setError('\n\nnull user \n\n');
     }
   }
-}// lastt things have to do : 
-
+} // lastt things have to do :
 
 /**
  * process the addditional info by send google user and all info to fire store

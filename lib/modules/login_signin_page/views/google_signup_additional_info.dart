@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mmarket_interfaces/core/app_routers.dart';
+import 'package:mmarket_interfaces/models/user_model.dart';
 import '../../../constants/colors.dart';
 import '../../../core/app_snackbar.dart';
 import '../../../core/manage_app_state/app_status.dart';
@@ -15,9 +16,9 @@ class GoogleSignupAdditionalInfo extends StatelessWidget {
 
   final TextEditingController dateOfBirth = TextEditingController();
 
-  final GoogleLoginSignupControlle myGoogleuser =
-      Get.put(GoogleLoginSignupControlle());
-
+  
+  final GoogleLoginSignupControlle googleLoginSignUpContoller = Get.find();
+  
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -38,19 +39,22 @@ class GoogleSignupAdditionalInfo extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Obx(() {
-          if (myGoogleuser.appStateController.state.value == AppState.loading) {
-            return Center(
+          if (googleLoginSignUpContoller.appStateController.state.value ==
+              AppState.loading) {
+            return const Center(
                 child: CircularProgressIndicator(
               color: salmon,
               backgroundColor: Terracotta,
             ));
           }
 
-          if (myGoogleuser.appStateController.state.value == AppState.error) {
+          if (googleLoginSignUpContoller.appStateController.state.value ==
+              AppState.error) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
               AppSnackBar(
                   context: context,
-                  msg: myGoogleuser.appStateController.errorMsg.toString());
+                  msg: googleLoginSignUpContoller.appStateController.errorMsg
+                      .toString());
             });
           }
           return Form(
@@ -124,19 +128,9 @@ class GoogleSignupAdditionalInfo extends StatelessWidget {
                       child: MaterialButton(
                         onPressed: () async {
                           if (_formKey.currentState!.validate()) {
-                            if (FirebaseAuth.instance.currentUser != null) {
-                              await myGoogleuser.saveUserToFirestore(
-                                  mobileNumber.text, dateOfBirth.text);
-                            } else {
-                              // Handle the case where the user is not authenticated
-                              print(
-                                  "\n=======================User is not authenticated additional screen.==========================\n");
-                              // Optionally, redirect the user to the login screen
-                              Get.toNamed(Routes.Login);
-                              AppSnackBar(
-                                  context: context,
-                                  msg: 'User is not authenticated.');
-                            }
+                            await googleLoginSignUpContoller
+                                .saveUserToFirestore(
+                                    mobileNumber.text, dateOfBirth.text);
                           }
                         },
                         child: const Text(
