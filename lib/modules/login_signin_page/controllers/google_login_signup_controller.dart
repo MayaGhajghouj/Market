@@ -14,8 +14,8 @@ class Google_facebook_LoginSignupControlle extends GetxController {
 
   /// this function is the logic of goole auth
   Future<void> signUpSignInWithGoogle(
-  //  required context,
-  ) async {
+      //  required context,
+      ) async {
     try {
       appStateController.startLoading();
 
@@ -41,13 +41,19 @@ class Google_facebook_LoginSignupControlle extends GetxController {
           await FirebaseAuth.instance.signInWithCredential(credential);
 
       /// Check if the user is new by checking Firestore
-      await FirebaseFirestore.instance
-          .collection('usersData')
-          .doc(userCredential.user!.uid) // firebase id creation
+
+      CollectionReference usersCollection =
+          FirebaseFirestore.instance.collection('usersData');
+
+      // Query to check if a user with the given UID exists
+      await usersCollection
+          .where('id', isEqualTo: userCredential.user!.uid)
           .get()
           .then((Value) {
-        if (!Value.exists) {
+        if (Value.docs.isEmpty) {
           // User is new
+          print(Value.toString());
+          print('====================value================================');
           userModel.value = UserModel(
               id: userCredential.user!.uid,
               displayName: userCredential.user!.displayName ?? 'name',
@@ -61,7 +67,6 @@ class Google_facebook_LoginSignupControlle extends GetxController {
           Get.put(this);
           Get.toNamed(Routes.GoogleSignupAdditionalInfo);
           appStateController.setSuccess();
-
         } else {
           // User already exists, navigate to the home screen
           Get.toNamed(Routes.WelcomeBackPage);
@@ -71,15 +76,11 @@ class Google_facebook_LoginSignupControlle extends GetxController {
     } catch (e) {
       print('\n\nerror in authID with google \n $e\n');
       appStateController.setError('error in auth with google');
-   
     }
-  
-  
   }
 
-/// this function is the logic of facebook auth
-   Future<void> signUpSignInWithFacebook() async 
-  {
+  /// this function is the logic of facebook auth
+  Future<void> signUpSignInWithFacebook() async {
     try {
       appStateController.startLoading();
 
@@ -128,8 +129,6 @@ class Google_facebook_LoginSignupControlle extends GetxController {
     }
   }
 
-
-
 //====================================================================================================
   //  if the user is new and he signup with email .. he will enter additional information
 
@@ -165,6 +164,4 @@ class Google_facebook_LoginSignupControlle extends GetxController {
       appStateController.setError('\n\nnull user \n\n');
     }
   }
-
-
 }
