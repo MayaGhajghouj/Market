@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:mmarket_interfaces/core/app_routers.dart';
 import 'package:mmarket_interfaces/core/manage_app_state/app_state_controller.dart';
 import 'package:mmarket_interfaces/models/user_model.dart';
-import 'package:mmarket_interfaces/modules/login_signin_page/controllers/facebook_login_signup_controller.dart';
 import '../../../constants/colors.dart';
 import '../../../core/app_snackbar.dart';
 import '../../../core/manage_app_state/app_status.dart';
@@ -19,8 +18,7 @@ class GoogleSignupAdditionalInfo extends StatelessWidget {
   final TextEditingController dateOfBirth = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
-  final GoogleLoginSignupControlle googleLoginSignUpContoller = Get.find();
-  final FacebookLoginSignUpController facebookLoginSignUpController =
+  final Google_facebook_LoginSignupControlle googleLoginSignUpContoller =
       Get.find();
   final AppStateController appStateController = Get.find();
 

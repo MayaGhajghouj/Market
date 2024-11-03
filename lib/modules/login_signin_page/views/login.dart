@@ -4,7 +4,6 @@ import 'package:mmarket_interfaces/constants/colors.dart';
 import 'package:mmarket_interfaces/core/app_routers.dart';
 import 'package:mmarket_interfaces/core/manage_app_state/app_status.dart';
 import 'package:mmarket_interfaces/core/app_snackbar.dart';
-import 'package:mmarket_interfaces/modules/login_signin_page/controllers/facebook_login_signup_controller.dart';
 import 'package:mmarket_interfaces/widgets_componants/formdata.dart';
 import '../controllers/google_login_signup_controller.dart';
 import '../controllers/password&email_login_controller.dart';
@@ -27,9 +26,8 @@ class _LoginState extends State<Login> {
 
   bool obscureText = true;
 
-  final GoogleLoginSignupControlle googleSignIn = GoogleLoginSignupControlle();
-  final FacebookLoginSignUpController facebookLoginSignUpController =
-      FacebookLoginSignUpController();
+  final Google_facebook_LoginSignupControlle google_facebook_LoginSignupControlle = Google_facebook_LoginSignupControlle();
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -220,7 +218,7 @@ class _LoginState extends State<Login> {
                           // facebook login
                           IconButton(
                               onPressed: () async {
-                                facebookLoginSignUpController
+                                google_facebook_LoginSignupControlle
                                     .signUpSignInWithFacebook();
                               },
                               icon: const Icon(
@@ -229,7 +227,7 @@ class _LoginState extends State<Login> {
                           // google login
                           IconButton(
                               onPressed: () async {
-                                await googleSignIn.signUpSignInWithGoogle();
+                                await google_facebook_LoginSignupControlle.signUpSignInWithGoogle();
                               },
                               icon: const Icon(
                                 Icons.alternate_email,
