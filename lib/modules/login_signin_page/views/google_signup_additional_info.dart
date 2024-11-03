@@ -2,7 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mmarket_interfaces/core/app_routers.dart';
+import 'package:mmarket_interfaces/core/manage_app_state/app_state_controller.dart';
 import 'package:mmarket_interfaces/models/user_model.dart';
+import 'package:mmarket_interfaces/modules/login_signin_page/controllers/facebook_login_signup_controller.dart';
 import '../../../constants/colors.dart';
 import '../../../core/app_snackbar.dart';
 import '../../../core/manage_app_state/app_status.dart';
@@ -15,11 +17,12 @@ class GoogleSignupAdditionalInfo extends StatelessWidget {
   final TextEditingController mobileNumber = TextEditingController();
 
   final TextEditingController dateOfBirth = TextEditingController();
-
-  
-  final GoogleLoginSignupControlle googleLoginSignUpContoller = Get.find();
-  
   final _formKey = GlobalKey<FormState>();
+
+  final GoogleLoginSignupControlle googleLoginSignUpContoller = Get.find();
+  final FacebookLoginSignUpController facebookLoginSignUpController =
+      Get.find();
+  final AppStateController appStateController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -39,8 +42,7 @@ class GoogleSignupAdditionalInfo extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Obx(() {
-          if (googleLoginSignUpContoller.appStateController.state.value ==
-              AppState.loading) {
+          if (appStateController.state.value == AppState.loading) {
             return const Center(
                 child: CircularProgressIndicator(
               color: salmon,
@@ -48,13 +50,11 @@ class GoogleSignupAdditionalInfo extends StatelessWidget {
             ));
           }
 
-          if (googleLoginSignUpContoller.appStateController.state.value ==
-              AppState.error) {
+          if (appStateController.state.value == AppState.error) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
               AppSnackBar(
                   context: context,
-                  msg: googleLoginSignUpContoller.appStateController.errorMsg
-                      .toString());
+                  msg: appStateController.errorMsg.toString());
             });
           }
           return Form(

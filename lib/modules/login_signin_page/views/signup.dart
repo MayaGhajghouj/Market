@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:mmarket_interfaces/core/app_routers.dart';
 import 'package:mmarket_interfaces/core/manage_app_state/app_status.dart';
 import 'package:mmarket_interfaces/core/app_snackbar.dart';
+import 'package:mmarket_interfaces/modules/login_signin_page/controllers/facebook_login_signup_controller.dart';
 import 'package:mmarket_interfaces/widgets_componants/formdata.dart';
 import '../../../constants/colors.dart';
 import '../controllers/google_login_signup_controller.dart';
@@ -41,6 +42,8 @@ class _SignupState extends State<Signup> {
   bool obscureText = true;
 
   final GoogleLoginSignupControlle googleSignup = GoogleLoginSignupControlle();
+  final FacebookLoginSignUpController facebookLoginSignUpController =
+      FacebookLoginSignUpController();
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +65,7 @@ class _SignupState extends State<Signup> {
         child: Obx(() {
           if (authSignUpController.appStateController.state.value ==
               AppState.loading) {
-            return Center(
+            return const Center(
                 child: CircularProgressIndicator(
               color: salmon,
               backgroundColor: Terracotta,
@@ -380,16 +383,17 @@ class _SignupState extends State<Signup> {
                         children: [
                           // facebook signup
                           IconButton(
-                              onPressed: () {},
+                              onPressed: () async {
+                                await facebookLoginSignUpController
+                                    .signUpSignInWithFacebook();
+                              },
                               icon: const Icon(
                                 Icons.facebook_outlined,
                               )),
                           // google signup
                           IconButton(
-                              onPressed: () async
-                              {
-                                await googleSignup.signUpSignInWithGoogle(
-                                    context: context);
+                              onPressed: () async {
+                                await googleSignup.signUpSignInWithGoogle();
                               },
                               icon: const Icon(
                                 Icons.alternate_email,

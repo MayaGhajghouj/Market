@@ -13,9 +13,9 @@ class GoogleLoginSignupControlle extends GetxController {
   Rx<UserModel?> userModel = Rx(null);
 
   /// this function is the logic of goole auth
-  Future<void> signUpSignInWithGoogle({
-    required context,
-  }) async {
+  Future<void> signUpSignInWithGoogle(
+  //  required context,
+  ) async {
     try {
       appStateController.startLoading();
 
@@ -55,13 +55,13 @@ class GoogleLoginSignupControlle extends GetxController {
               phone: 'not register yet',
               birthday: 'not register yet');
 
-          print('========== uuser mode =====================');
+          print('========== uuser model =====================');
           print('${userModel.value}');
-          print('========== uuser mode =====================');
+          print('========== uuser model =====================');
           Get.put(this);
           Get.toNamed(Routes.GoogleSignupAdditionalInfo);
-
           appStateController.setSuccess();
+
         } else {
           // User already exists, navigate to the home screen
           Get.toNamed(Routes.WelcomeBackPage);
@@ -71,8 +71,16 @@ class GoogleLoginSignupControlle extends GetxController {
     } catch (e) {
       print('\n\nerror in authID with google \n $e\n');
       appStateController.setError('error in auth with google');
+   
     }
+  
+  
   }
+
+
+
+
+
 //====================================================================================================
   //  if the user is new and he signup with email .. he will enter additional information
 
@@ -84,7 +92,7 @@ class GoogleLoginSignupControlle extends GetxController {
     print('========== uuser mode =====================');
     print('${userModel.value}');
     print('========== uuser mode =====================');
-    Get.toNamed(Routes.GoogleSignupAdditionalInfo);
+
     if (userModel.value !=
         null) // this condition to sure that the user is login or signup
     {
@@ -108,11 +116,6 @@ class GoogleLoginSignupControlle extends GetxController {
       appStateController.setError('\n\nnull user \n\n');
     }
   }
-} // lastt things have to do :
 
-/**
- * process the addditional info by send google user and all info to fire store
- * i want to manage the state of app 
- * i want to test the errors and complete catcch error 
- * 
- */
+
+}
