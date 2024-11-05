@@ -5,7 +5,7 @@ import 'package:mmarket_interfaces/core/app_routers.dart';
 import 'package:mmarket_interfaces/core/manage_app_state/app_status.dart';
 import 'package:mmarket_interfaces/core/app_snackbar.dart';
 import 'package:mmarket_interfaces/widgets_componants/formdata.dart';
-import '../controllers/google_login_signup_controller.dart';
+import '../controllers/google_facebook_login_signup_controller.dart';
 import '../controllers/password&email_login_controller.dart';
 
 class Login extends StatefulWidget {

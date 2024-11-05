@@ -12,9 +12,9 @@ class ProductDes_DiningTable  extends StatelessWidget {
         RowTextButton1: 'Living room',
         RowTextButton2: ' Decorative Light',
         RowTextButton3: 'Bed',
-      ImagePath: 'assets/images/openproduct.png',
-      ProductTitle: 'Glass Table',
-      price: '300',
+        ImagePath: 'assets/images/openproduct.png',
+        ProductTitle: 'Glass Table',
+        price: '300',
 
 
     );

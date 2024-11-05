@@ -10,8 +10,7 @@ void main() async {
     WidgetsFlutterBinding.ensureInitialized();
     await Firebase.initializeApp();
     print('succes in firebase =====================');
-      Get.put(AppStateController()); // i will use Get.find if i need in my app
-
+    Get.put(AppStateController()); // i will use Get.find if i need in my app
   } catch (e) {
     print("Failed to initialize Firebase: $e");
   }
@@ -37,7 +36,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      initialRoute: Routes.Signup,
+      initialRoute: Routes.DiningRoomHomePage,
       getPages: AppPages.Pages,
     );
   }

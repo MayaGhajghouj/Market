@@ -29,7 +29,7 @@ class Routes {
   static const WelcomeBackPage = '/WelcomeBackPage';
   static const Login = '/Login';
   static const Signup = '/Signup';
-  static const GoogleSignupAdditionalInfo = '/GoogleSignupAdditionalInfo';
+  static const GoogleFacbookSignupAdditionalInfo = '/GoogleSignupAdditionalInfo';
 }
 
 class AppPages {
@@ -87,8 +87,8 @@ class AppPages {
       page: () => Signup(),
     ),
     GetPage(
-      name: Routes.GoogleSignupAdditionalInfo,
-      page: () => GoogleSignupAdditionalInfo(),
+      name: Routes.GoogleFacbookSignupAdditionalInfo,
+      page: () => GoogleFacbookSignupAdditionalInfo(),
     ),
   ];
 }

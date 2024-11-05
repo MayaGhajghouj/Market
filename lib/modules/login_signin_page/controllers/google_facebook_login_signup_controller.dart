@@ -65,7 +65,7 @@ class Google_facebook_LoginSignupControlle extends GetxController {
           print('${userModel.value}');
           print('========== uuser model =====================');
           Get.put(this);
-          Get.toNamed(Routes.GoogleSignupAdditionalInfo);
+          Get.toNamed(Routes.GoogleFacbookSignupAdditionalInfo);
           appStateController.setSuccess();
         } else {
           // User already exists, navigate to the home screen

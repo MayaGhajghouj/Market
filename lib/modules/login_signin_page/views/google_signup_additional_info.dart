@@ -8,10 +8,10 @@ import '../../../constants/colors.dart';
 import '../../../core/app_snackbar.dart';
 import '../../../core/manage_app_state/app_status.dart';
 import '../../../widgets_componants/formdata.dart';
-import '../controllers/google_login_signup_controller.dart';
+import '../controllers/google_facebook_login_signup_controller.dart';
 
-class GoogleSignupAdditionalInfo extends StatelessWidget {
-  GoogleSignupAdditionalInfo({super.key});
+class GoogleFacbookSignupAdditionalInfo extends StatelessWidget {
+  GoogleFacbookSignupAdditionalInfo({super.key});
 
   final TextEditingController mobileNumber = TextEditingController();
 
