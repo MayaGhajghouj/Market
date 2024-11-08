@@ -45,13 +45,8 @@ class DiningRoomHomePage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
           children: [
-              Row(
+              Row( // this row is in the above of screen
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-          // font-family: League Spartan;
-          //     font-size: 16.24px;
-          //     font-weight: 400;
-          // line-height: 14.94px;
-          //     text-align: center;
               children: [
                 TextButton(
                     onPressed: (){
@@ -99,7 +94,7 @@ class DiningRoomHomePage extends StatelessWidget {
               Row(
              children: [
                ProductLIstItem(
-                 ProductDetailsPage: Routes.ProductDes_DiningTable,
+               ProductDetailsPage: Routes.ProductDes_DiningTable,
                PicPath:'assets/images/Topleft.png',
                Title: 'Deluxe table',
                Description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
