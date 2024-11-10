@@ -2,13 +2,11 @@ import 'dart:io';
 
 import 'package:firebase_storage/firebase_storage.dart';
 
-class Storage 
-{
+class StoragePictures {
   final FirebaseStorage _storage = FirebaseStorage.instance;
 
   /// this function to upload a file to firestore storage and retrieve the pathurl
-  Future<String?> uploadFile(String filePath) async 
-  {
+  Future<String?> uploadFile(String filePath) async {
     File file = File(filePath);
     try {
       // Define a unique file name for the upload
@@ -26,6 +24,4 @@ class Storage
     }
     return null;
   }
-
-
 }
