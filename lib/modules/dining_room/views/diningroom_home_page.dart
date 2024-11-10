@@ -1,19 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mmarket_interfaces/constants/colors.dart';
-import 'package:mmarket_interfaces/core/app_routers.dart';
 import 'package:mmarket_interfaces/core/app_snackbar.dart';
 import 'package:mmarket_interfaces/core/firebase_services/firestore_products/firestore_products.dart';
 import 'package:mmarket_interfaces/core/manage_app_state/app_status.dart';
 import 'package:mmarket_interfaces/widgets_componants/product_list_item.dart';
 
-class DiningRoomHomePage extends StatelessWidget {
+class DiningRoomHomePage extends StatefulWidget {
   const DiningRoomHomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    FirestoreProducts firestoreProducts = Get.put(FirestoreProducts());
+  State<DiningRoomHomePage> createState() => _DiningRoomHomePageState();
+}
 
+class _DiningRoomHomePageState extends State<DiningRoomHomePage> {
+  @override
+  void initState() {
+    super.initState();
+    FirestoreProducts firestoreProducts = Get.put(FirestoreProducts());
+    firestoreProducts.getProductsByCategories(category: 'diningRoom');
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    FirestoreProducts firestoreProducts = Get.find();
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -45,157 +55,101 @@ class DiningRoomHomePage extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
-        child: SingleChildScrollView(
-          child: Obx(() {
-            var myProducts = firestoreProducts.getProductsByCategories(
-                category: 'diningRoom');
-            // ignore: unrelated_type_equality_checks
-            if (firestoreProducts.appStateController.state ==
-                AppState.loading) {
-              return const Center(
-                  child: CircularProgressIndicator(
-                color: salmon,
-                backgroundColor: Terracotta,
-              ));
-            }
-            if (firestoreProducts.appStateController.state == AppState.error) {
-              WidgetsBinding.instance.addPostFrameCallback((_) {
-                AppSnackBar(
-                    context: context,
-                    msg: firestoreProducts.appStateController.errorMsg
-                        .toString());
-              });
-            }
+        child: Obx(() {
+          var products = firestoreProducts.myProducts;
+          // ignore: unrelated_type_equality_checks
+          if (firestoreProducts.appStateController.state == AppState.loading) {
+            return const Center(
+                child: CircularProgressIndicator(
+              color: salmon,
+              backgroundColor: Terracotta,
+            ));
+          }
+          if (firestoreProducts.appStateController.state == AppState.error) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              AppSnackBar(
+                  context: context,
+                  msg:
+                      firestoreProducts.appStateController.errorMsg.toString());
+            });
+          }
 
-            return Column(
-              children: [
-                Row(
-                  // this row is in the above of screen
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    TextButton(
-                      onPressed: () {},
-                      child: const Text(
-                        'Living room',
-                        style: TextStyle(
-                          color: salmon,
-                          fontFamily: 'League Spartan',
-                          fontWeight: FontWeight.bold,
-                        ),
-                        textAlign: TextAlign.center,
+          return Column(
+            children: [
+              Row(
+                // this row is in the above of screen
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  TextButton(
+                    onPressed: () {},
+                    child: const Text(
+                      'Living room',
+                      style: TextStyle(
+                        color: salmon,
+                        fontFamily: 'League Spartan',
+                        fontWeight: FontWeight.bold,
                       ),
+                      textAlign: TextAlign.center,
                     ),
-                    const SizedBox(
-                      width: 9,
-                    ),
-                    TextButton(
-                      onPressed: () {},
-                      child: const Text(
-                        ' Decorative Light',
-                        style: TextStyle(
-                          color: salmon,
-                          fontFamily: 'League Spartan',
-                          fontWeight: FontWeight.bold,
-                        ),
-                        textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(
+                    width: 9,
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    child: const Text(
+                      ' Decorative Light',
+                      style: TextStyle(
+                        color: salmon,
+                        fontFamily: 'League Spartan',
+                        fontWeight: FontWeight.bold,
                       ),
+                      textAlign: TextAlign.center,
                     ),
-                    const SizedBox(
-                      width: 9,
-                    ),
-                    TextButton(
-                      onPressed: () {},
-                      child: const Text(
-                        'Bed',
-                        style: TextStyle(
-                          color: salmon,
-                          fontFamily: 'League Spartan',
-                          fontWeight: FontWeight.bold,
-                        ),
-                        textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(
+                    width: 9,
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    child: const Text(
+                      'Bed',
+                      style: TextStyle(
+                        color: salmon,
+                        fontFamily: 'League Spartan',
+                        fontWeight: FontWeight.bold,
                       ),
+                      textAlign: TextAlign.center,
                     ),
-                  ],
+                  ),
+                ],
+              ),
+              Expanded(
+                child: GridView.builder(
+                  itemCount: products.length,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 0.0,
+                    crossAxisSpacing: 0.0,
+                    childAspectRatio: 0.75,
+                  ),
+                  itemBuilder: (BuildContext context, int index) {
+                    final product = firestoreProducts.myProducts[index];
+                    if (products.isNotEmpty) {
+                      print('Success in fetch data');
+                      return ProductLIstItem(productModel: product);
+                    } else {
+                      AppSnackBar(
+                          context: context, msg: 'No products available');
+                      print('faild in fetch data');
+                      return null;
+                    }
+                  },
                 ),
-
-                // this rows will comming for products
-                Row(
-                  children: [
-                    ProductLIstItem(
-                      ProductDetailsPage: Routes.ProductDes_DiningTable,
-                      PicPath: 'assets/images/Topleft.png',
-                      Title: 'Deluxe table',
-                      Description:
-                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-                      Price: 420,
-                    ),
-                    ProductLIstItem(
-                      PicPath: 'assets/images/Topright.png',
-                      Title: 'Modern table',
-                      Description:
-                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-                      Price: 320,
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    ProductLIstItem(
-                      PicPath: 'assets/images/Downleft.png',
-                      Title: 'Modern Glass table',
-                      Description:
-                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-                      Price: 220,
-                    ),
-                    ProductLIstItem(
-                      PicPath: 'assets/images/Downright.png',
-                      Title: 'Bohemian table',
-                      Description:
-                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-                      Price: 410,
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    ProductLIstItem(
-                      PicPath: 'assets/images/Topleft.png',
-                      Title: 'Deluxe table',
-                      Description:
-                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-                      Price: 420,
-                    ),
-                    ProductLIstItem(
-                      PicPath: 'assets/images/Topright.png',
-                      Title: 'Modern table',
-                      Description:
-                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-                      Price: 320,
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    ProductLIstItem(
-                      PicPath: 'assets/images/Downleft.png',
-                      Title: 'Modern Glass table',
-                      Description:
-                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-                      Price: 220,
-                    ),
-                    ProductLIstItem(
-                      PicPath: 'assets/images/Downright.png',
-                      Title: 'Bohemian table',
-                      Description:
-                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-                      Price: 410,
-                    ),
-                  ],
-                ),
-              ],
-            );
-          }),
-        ),
+              ),
+            ],
+          );
+        }),
       ),
     );
   }

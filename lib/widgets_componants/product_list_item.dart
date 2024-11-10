@@ -1,29 +1,26 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mmarket_interfaces/constants/colors.dart';
+import 'package:mmarket_interfaces/core/helper/image_url.dart';
+import '../models/Product_model.dart';
 
+Widget ProductLIstItem(
+    {String? ProductDetailsPage, required ProductModel productModel
 
-Widget ProductLIstItem ({
-required String PicPath ,//picture
-String? ProductDetailsPage,
-required String Title,// title
-required String Description,// short description
-required int Price,//price
 // onpress for favourit
 // onpress for add item to card
-})
-{
+    }) {
   return Expanded(
     child: GestureDetector(
       onTap: () {
         Get.toNamed(ProductDetailsPage!);
       },
-      child: Container( // the big frame contain the product like image, and title, price
+      child: Container(
+        // the big frame contain the product like image, and title, price
         padding: const EdgeInsets.all(8.0),
-        width: 163,
+        //    width: 163,
         //  height: 219,
-        decoration:  BoxDecoration(
+        decoration: const BoxDecoration(
           //color: brown_rosy,
           borderRadius: BorderRadius.all(
             Radius.circular(14.0),
@@ -32,19 +29,36 @@ required int Price,//price
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container( // container for picture
+            Container(
+              // container for picture
               width: 163,
-              decoration:   const BoxDecoration(
+              decoration: BoxDecoration(
                 color: Beige,
-                borderRadius: BorderRadius.all(Radius.circular(14.0),),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(14.0),
+                ),
               ),
-              child:  Image(
-                image:AssetImage(
-                  PicPath,),
+              child: Image.network(
+                convertToDirectLink(productModel.productPath),
+                loadingBuilder: (context, child, loadingProgress) {
+                  if (loadingProgress == null) return child;
+                  return const Center(
+                      child: CircularProgressIndicator(
+                    color: salmon,
+                    backgroundColor: Terracotta,
+                  ));
+                },
+                errorBuilder: (context, error, stackTrace) {
+                  return Icon(Icons.error);
+                },
+                fit: BoxFit.cover, // Adjust image fit
               ),
             ),
-            const SizedBox(height: 9,),
-             Text(Title,
+            const SizedBox(
+              height: 9,
+            ),
+            Text(
+              productModel.productName,
               style: const TextStyle(
                 //  font-family: Poppins;
                 // font-size: 15px;
@@ -52,16 +66,19 @@ required int Price,//price
                 // line-height: 22.5px;
                 // text-align: left;
                 // color: #4B4544;
-                fontFamily:'Poppins',
+                fontFamily: 'Poppins',
                 fontSize: 15,
                 fontWeight: FontWeight.w500,
                 color: Black,
               ),
             ),
-            const SizedBox(height: 9,),
-             Text(Description,
+            const SizedBox(
+              height: 9,
+            ),
+            Text(
+              productModel.productDescription,
               style: const TextStyle(
-                fontFamily:'League Spartan',
+                fontFamily: 'League Spartan',
                 fontSize: 13,
                 fontWeight: FontWeight.w300,
                 color: Black,
@@ -69,7 +86,9 @@ required int Price,//price
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),
-            const SizedBox(height: 9,),
+            const SizedBox(
+              height: 9,
+            ),
             const Divider(
               color: salmon,
               thickness: 1.5,
@@ -78,8 +97,9 @@ required int Price,//price
               width: 163,
               child: Row(
                 children: [
-                   Expanded(
-                    child: Text('$Price\$',
+                  Expanded(
+                    child: Text(
+                      productModel.productPrice.toString(),
                       style: const TextStyle(
                         //styleName: Subtitle;
                         //   font-family: Poppins;
@@ -88,7 +108,7 @@ required int Price,//price
                         // line-height: 22.5px;
                         // text-align: right;
                         // color: #CC7861;
-                        fontFamily:'Poppins',
+                        fontFamily: 'Poppins',
                         fontSize: 15,
                         fontWeight: FontWeight.w500,
                         color: Terracotta,
@@ -100,7 +120,8 @@ required int Price,//price
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        IconButton(onPressed: (){},
+                        IconButton(
+                          onPressed: () {},
                           icon: Container(
                             decoration: const BoxDecoration(
                               shape: BoxShape.circle,
@@ -116,7 +137,8 @@ required int Price,//price
                             ),
                           ),
                         ),
-                        IconButton(onPressed: (){},
+                        IconButton(
+                          onPressed: () {},
                           icon: Container(
                             decoration: const BoxDecoration(
                               shape: BoxShape.circle,
@@ -135,7 +157,6 @@ required int Price,//price
                       ],
                     ),
                   ),
-
                 ],
               ),
             ),
@@ -144,6 +165,4 @@ required int Price,//price
       ),
     ),
   );
-
 }
-
