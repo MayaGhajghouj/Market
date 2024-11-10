@@ -1,9 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mmarket_interfaces/core/app_routers.dart';
 import 'package:mmarket_interfaces/core/manage_app_state/app_state_controller.dart';
-import 'package:mmarket_interfaces/models/user_model.dart';
 import '../../../constants/colors.dart';
 import '../../../core/app_snackbar.dart';
 import '../../../core/manage_app_state/app_status.dart';

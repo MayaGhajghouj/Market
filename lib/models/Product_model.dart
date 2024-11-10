@@ -30,13 +30,13 @@ class ProductModel {
 
   factory ProductModel.fromMap(Map<String, dynamic> myMap) {
     return ProductModel(
-      productID: myMap['productID'],
-      category: myMap['category'],
-      productName: myMap['productName'],
-      productDescription: myMap['productDescription'],
-      productPath: myMap['productPath'],
-      productPrice: myMap['productPrice'],
-    );
+      productID: myMap['productID']?? 'null',
+      category: myMap['category']?? 'null',
+      productName: myMap['productName']?? 'null',
+      productDescription: myMap['productDescription']??'null',
+      productPath: myMap['productPath']??'null',
+      productPrice: double.parse(myMap['productPrice']??'0.0'),
+      );
   }
 
 // fromFirestore: (snapshot, options) => {
