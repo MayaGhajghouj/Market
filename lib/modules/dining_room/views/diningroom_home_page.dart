@@ -39,9 +39,9 @@ class _DiningRoomHomePageState extends State<DiningRoomHomePage> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   color: salmon,
-                  borderRadius: BorderRadius.all(
+                  borderRadius: const BorderRadius.all(
                     Radius.circular(20.0),
                   ),
                 ),
@@ -128,11 +128,11 @@ class _DiningRoomHomePageState extends State<DiningRoomHomePage> {
               Expanded(
                 child: GridView.builder(
                   itemCount: products.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     mainAxisSpacing: 0.0,
                     crossAxisSpacing: 0.0,
-                    childAspectRatio: 0.75,
+                    childAspectRatio: 5/8,
                   ),
                   itemBuilder: (BuildContext context, int index) {
                     final product = firestoreProducts.myProducts[index];

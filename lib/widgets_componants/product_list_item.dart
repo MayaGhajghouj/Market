@@ -30,7 +30,7 @@ Widget ProductLIstItem(
             // container for picture
             width: 163,
             height: 150,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Beige,
               borderRadius: BorderRadius.all(
                 Radius.circular(14.0),
@@ -47,7 +47,7 @@ Widget ProductLIstItem(
                 ));
               },
               errorBuilder: (context, error, stackTrace) {
-                return Icon(Icons.error);
+                return const Icon(Icons.error);
               },
               // fit: BoxFit.cover, // Adjust image fit
             ),
