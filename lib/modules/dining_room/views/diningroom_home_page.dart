@@ -7,6 +7,7 @@ import 'package:mmarket_interfaces/core/manage_app_state/app_status.dart';
 import 'package:mmarket_interfaces/widgets_componants/product_list_item.dart';
 
 class DiningRoomHomePage extends StatefulWidget {
+class DiningRoomHomePage extends StatefulWidget {
   const DiningRoomHomePage({super.key});
 
   @override
@@ -20,7 +21,12 @@ class _DiningRoomHomePageState extends State<DiningRoomHomePage> {
     FirestoreProducts firestoreProducts = Get.put(FirestoreProducts());
     firestoreProducts.getProductsByCategories(category: 'diningRoom');
   }
+    firestoreProducts.getProductsByCategories(category: 'diningRoom');
+  }
 
+  @override
+  Widget build(BuildContext context) {
+    FirestoreProducts firestoreProducts = Get.find();
   @override
   Widget build(BuildContext context) {
     FirestoreProducts firestoreProducts = Get.find();
@@ -55,6 +61,24 @@ class _DiningRoomHomePageState extends State<DiningRoomHomePage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
+        child: Obx(() {
+          var products = firestoreProducts.myProducts;
+          // ignore: unrelated_type_equality_checks
+          if (firestoreProducts.appStateController.state == AppState.loading) {
+            return const Center(
+                child: CircularProgressIndicator(
+              color: salmon,
+              backgroundColor: Terracotta,
+            ));
+          }
+          if (firestoreProducts.appStateController.state == AppState.error) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              AppSnackBar(
+                  context: context,
+                  msg:
+                      firestoreProducts.appStateController.errorMsg.toString());
+            });
+          }
         child: Obx(() {
           var products = firestoreProducts.myProducts;
           // ignore: unrelated_type_equality_checks

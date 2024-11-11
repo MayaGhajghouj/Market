@@ -3,6 +3,11 @@ import 'package:get/get.dart';
 import 'package:mmarket_interfaces/constants/colors.dart';
 import 'package:mmarket_interfaces/core/helper/image_url.dart';
 import '../models/Product_model.dart';
+import 'package:mmarket_interfaces/core/helper/image_url.dart';
+import '../models/Product_model.dart';
+
+Widget ProductLIstItem(
+    {String? ProductDetailsPage, required ProductModel productModel
 
 Widget ProductLIstItem(
     {String? ProductDetailsPage, required ProductModel productModel
