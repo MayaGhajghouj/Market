@@ -1,8 +1,7 @@
 import 'package:get/get.dart';
+import 'package:mmarket_interfaces/modules/ShowProductDescription/show_product_description.dart';
 import 'package:mmarket_interfaces/modules/dining_room/views/diningroom_home_page.dart';
-import 'package:mmarket_interfaces/modules/dining_room/views/product_description_DiningTable.dart';
 import 'package:mmarket_interfaces/modules/dining_room/views/sections_diningroom.dart';
-import 'package:mmarket_interfaces/modules/living_room/views/product_description_sofa.dart';
 import 'package:mmarket_interfaces/modules/living_room/views/sections_livingroom.dart';
 import 'package:mmarket_interfaces/modules/living_room/views/livingroom_home_page.dart';
 import 'package:mmarket_interfaces/modules/login_signin_page/views/login.dart';
@@ -16,11 +15,10 @@ import 'package:mmarket_interfaces/modules/welcomebackpage/views/welcome_back_pa
 import '../modules/login_signin_page/views/google_signup_additional_info.dart';
 
 class Routes {
-  static const ProductDes_DiningTable = '/ProductDes_DiningTable';
+  static const ShowProductDescription = '/ShowProductDescription';
   static const DiningRoomHomePage = '/DiningRoomHomePage';
   static const SectionsLivingroom = '/SectionsLivingroom';
   static const SectionsDiningroom = '/SectionsDiningroom';
-  static const ProductDes_Sofa = '/ProductDes_Sofa';
   static const livingroom_HomePage = '/livingroom_HomePage';
   static const EditProfile = '/EditProfile';
   static const Profile = '/Profile';
@@ -29,14 +27,15 @@ class Routes {
   static const WelcomeBackPage = '/WelcomeBackPage';
   static const Login = '/Login';
   static const Signup = '/Signup';
-  static const GoogleFacbookSignupAdditionalInfo = '/GoogleSignupAdditionalInfo';
+  static const GoogleFacbookSignupAdditionalInfo =
+      '/GoogleSignupAdditionalInfo';
 }
 
 class AppPages {
   static final Pages = [
-    GetPage(
-      name: Routes.ProductDes_DiningTable,
-      page: () => ProductDes_DiningTable(),
+     GetPage(
+      name: Routes.ShowProductDescription,
+      page: () => ShowProductDescription(),
     ),
     GetPage(
       name: Routes.DiningRoomHomePage,
@@ -45,10 +44,6 @@ class AppPages {
     GetPage(
       name: Routes.SectionsLivingroom,
       page: () => const SectionsLivingroom(),
-    ),
-    GetPage(
-      name: Routes.ProductDes_Sofa,
-      page: () => ProductDes_Sofa(),
     ),
     GetPage(
       name: Routes.livingroom_HomePage,

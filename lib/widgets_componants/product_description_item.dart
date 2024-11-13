@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:mmarket_interfaces/constants/colors.dart';
+import 'package:mmarket_interfaces/core/helper/image_url.dart';
+import '../models/Product_model.dart';
 
 Widget ProductDescriptionItem({
-  required String AppbarText,
-  required String RowTextButton1,
-  required String RowTextButton2,
-  required String RowTextButton3,
-  required String ImagePath,
-  required String ProductTitle,
-  required String price,
+  required ProductModel productModel,
 }) {
   return Scaffold(
     appBar: AppBar(
       centerTitle: true,
       title: Text(
-        AppbarText,
+        productModel.subCategory,
         style: const TextStyle(
           fontFamily: 'Poppins',
           color: salmon,
@@ -49,7 +45,7 @@ Widget ProductDescriptionItem({
               TextButton(
                 onPressed: () {},
                 child: Text(
-                  RowTextButton1,
+                  'Bed',
                   style: TextStyle(
                     color: salmon,
                     fontFamily: 'League Spartan',
@@ -64,7 +60,7 @@ Widget ProductDescriptionItem({
               TextButton(
                 onPressed: () {},
                 child: Text(
-                  RowTextButton2,
+                  ' Decorative Light',
                   style: TextStyle(
                     color: salmon,
                     fontFamily: 'League Spartan',
@@ -79,7 +75,7 @@ Widget ProductDescriptionItem({
               TextButton(
                 onPressed: () {},
                 child: Text(
-                  RowTextButton3,
+                  'Living room',
                   style: TextStyle(
                     color: salmon,
                     fontFamily: 'League Spartan',
@@ -101,31 +97,39 @@ Widget ProductDescriptionItem({
                     borderRadius: BorderRadius.all(Radius.circular(14.0)),
                     color: Beige,
                   ),
-                  child: Image(
-                    image: AssetImage(ImagePath),
+                  child: Image.network(
+                    convertToDirectLink(productModel.productPath),
+                    loadingBuilder: (context, child, loadingProgress) {
+                      if (loadingProgress == null) return child;
+                      return const Center(
+                          child: CircularProgressIndicator(
+                        color: salmon,
+                        backgroundColor: Terracotta,
+                      ));
+                    },
+                    errorBuilder: (context, error, stackTrace) {
+                      return const Icon(Icons.error);
+                    },
+                    // fit: BoxFit.cover, // Adjust image fit
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      ProductTitle,
-                      style: TextStyle(
+                      productModel.productName,
+                      style: const TextStyle(
                         fontFamily: 'Poppins',
                         fontSize: 20,
                         fontWeight: FontWeight.w600,
                         color: Black,
                       ),
                     ),
-                    const Text(
-                      'Lorem ipsum dolor sit amet consectetur.'
-                      ' Odio neque commodo id aenean quis magna. '
-                      'Auctor neque id pharetra gravida. Libero'
-                      ' scelerisque ut mauris volutpat risus nec '
-                      'facilisi adipiscing. Augue mollis amet.',
+                    Text(
+                      productModel.productDescription,
                       style: const TextStyle(
                         fontFamily: 'League Spartan',
                         fontSize: 13,
@@ -143,8 +147,8 @@ Widget ProductDescriptionItem({
                         children: [
                           Expanded(
                             child: Text(
-                              '$price\$',
-                              style: TextStyle(
+                              '${productModel.productPrice}\$',
+                              style: const TextStyle(
                                 fontFamily: 'Poppins',
                                 fontSize: 20,
                                 fontWeight: FontWeight.w600,
@@ -158,6 +162,7 @@ Widget ProductDescriptionItem({
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 IconButton(
+                                  // fav icon
                                   onPressed: () {},
                                   icon: Container(
                                     decoration: const BoxDecoration(
@@ -175,6 +180,7 @@ Widget ProductDescriptionItem({
                                   ),
                                 ),
                                 IconButton(
+                                  // like icon
                                   onPressed: () {},
                                   icon: Container(
                                     decoration: const BoxDecoration(
@@ -200,7 +206,7 @@ Widget ProductDescriptionItem({
                     MaterialButton(
                       onPressed: () {},
                       color: salmon,
-                      child: Center(
+                      child: const Center(
                         child: Text(
                           'Add to Cart',
                           style: TextStyle(

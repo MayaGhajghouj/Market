@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mmarket_interfaces/constants/colors.dart';
 import 'package:mmarket_interfaces/core/app_snackbar.dart';
-import 'package:mmarket_interfaces/core/firebase_services/firestore_products/firestore_products.dart';
+import 'package:mmarket_interfaces/core/firebase_services/firestore_products/featch_products.dart';
 import 'package:mmarket_interfaces/core/manage_app_state/app_status.dart';
 import 'package:mmarket_interfaces/widgets_componants/product_list_item.dart';
 

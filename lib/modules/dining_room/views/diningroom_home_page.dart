@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mmarket_interfaces/constants/colors.dart';
+import 'package:mmarket_interfaces/core/app_routers.dart';
 import 'package:mmarket_interfaces/core/app_snackbar.dart';
-import 'package:mmarket_interfaces/core/firebase_services/firestore_products/firestore_products.dart';
+import 'package:mmarket_interfaces/core/firebase_services/firestore_products/featch_products.dart';
 import 'package:mmarket_interfaces/core/manage_app_state/app_status.dart';
 import 'package:mmarket_interfaces/widgets_componants/product_list_item.dart';
 
-class DiningRoomHomePage extends StatefulWidget {
 class DiningRoomHomePage extends StatefulWidget {
   const DiningRoomHomePage({super.key});
 
@@ -21,12 +21,7 @@ class _DiningRoomHomePageState extends State<DiningRoomHomePage> {
     FirestoreProducts firestoreProducts = Get.put(FirestoreProducts());
     firestoreProducts.getProductsByCategories(category: 'diningRoom');
   }
-    firestoreProducts.getProductsByCategories(category: 'diningRoom');
-  }
 
-  @override
-  Widget build(BuildContext context) {
-    FirestoreProducts firestoreProducts = Get.find();
   @override
   Widget build(BuildContext context) {
     FirestoreProducts firestoreProducts = Get.find();
@@ -61,24 +56,6 @@ class _DiningRoomHomePageState extends State<DiningRoomHomePage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
-        child: Obx(() {
-          var products = firestoreProducts.myProducts;
-          // ignore: unrelated_type_equality_checks
-          if (firestoreProducts.appStateController.state == AppState.loading) {
-            return const Center(
-                child: CircularProgressIndicator(
-              color: salmon,
-              backgroundColor: Terracotta,
-            ));
-          }
-          if (firestoreProducts.appStateController.state == AppState.error) {
-            WidgetsBinding.instance.addPostFrameCallback((_) {
-              AppSnackBar(
-                  context: context,
-                  msg:
-                      firestoreProducts.appStateController.errorMsg.toString());
-            });
-          }
         child: Obx(() {
           var products = firestoreProducts.myProducts;
           // ignore: unrelated_type_equality_checks
@@ -156,13 +133,16 @@ class _DiningRoomHomePageState extends State<DiningRoomHomePage> {
                     crossAxisCount: 2,
                     mainAxisSpacing: 0.0,
                     crossAxisSpacing: 0.0,
-                    childAspectRatio: 5/8,
+                    childAspectRatio: 5 / 8,
                   ),
+                
                   itemBuilder: (BuildContext context, int index) {
                     final product = firestoreProducts.myProducts[index];
                     if (products.isNotEmpty) {
                       print('Success in fetch data');
-                      return ProductLIstItem(productModel: product);
+                      return ProductLIstItem(
+                      productModel: product
+                      );
                     } else {
                       AppSnackBar(
                           context: context, msg: 'No products available');
