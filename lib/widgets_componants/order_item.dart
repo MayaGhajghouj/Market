@@ -14,15 +14,15 @@ Widget orderItem ({
        Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text('$orderState',
-            style: TextStyle(
+          Text(orderState,
+            style: const TextStyle(
               fontFamily: 'League Spartan',
               fontWeight: FontWeight.w300,
               fontSize: 13,
             ),
           ),
-          Text('$date',
-            style: TextStyle(
+          Text(date,
+            style: const TextStyle(
               fontFamily: 'League Spartan',
               fontWeight: FontWeight.w300,
               fontSize: 13,
@@ -48,29 +48,29 @@ Widget orderItem ({
                 width: 89,
                 height: 89,
                 child:  Image(image:
-                AssetImage('$imagePath',)
+                AssetImage(imagePath,)
                 ),
               ),
             ),
           ),
-          SizedBox(width: 10.0,),
+          const SizedBox(width: 10.0,),
           // 2 column
            Expanded(
             flex: 2,
             child: Column(//has 3 sections 1.Title 2.SubText  3.Row
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('$title',
-                  style: TextStyle(
+                Text(title,
+                  style: const TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w500,
                     fontFamily: 'Poppins',
                     color: salmon,
                   ),
                 ),
-                SizedBox(height: 5.0,),
-                Text('$subText',
-                  style: TextStyle(
+                const SizedBox(height: 5.0,),
+                Text(subText,
+                  style: const TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w300,
                       fontFamily: 'League Spartan',
@@ -79,11 +79,21 @@ Widget orderItem ({
                   maxLines: 2,
                   overflow:TextOverflow.ellipsis,
                 ),
-                SizedBox(height: 5.0,),
+                const SizedBox(height: 5.0,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text('$price \$',
+                      style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: 'League Spartan',
+                          color: Colors.black
+                      ),
+                      maxLines: 3,
+                      overflow:TextOverflow.ellipsis,
+                    ),
+                    const Text('1x Uds. \$',
                       style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
@@ -93,17 +103,7 @@ Widget orderItem ({
                       maxLines: 3,
                       overflow:TextOverflow.ellipsis,
                     ),
-                    Text('1x Uds. \$',
-                      style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          fontFamily: 'League Spartan',
-                          color: Colors.black
-                      ),
-                      maxLines: 3,
-                      overflow:TextOverflow.ellipsis,
-                    ),
-                    Text('Total: \$ 7.50',
+                    const Text('Total: \$ 7.50',
                       style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
@@ -127,7 +127,7 @@ Widget orderItem ({
                   color: salmon,
                 ),
               ),
-              child: Icon(
+              child: const Icon(
                 Icons.delete,
                 size: 15,
                 color: salmon,
@@ -137,12 +137,12 @@ Widget orderItem ({
           const SizedBox(width: 10.0,),
           GestureDetector(
             child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 // color: salmon,
                 color: salmon,
               ),
-              child: Icon(
+              child: const Icon(
                 Icons.add,
                 size: 15,
                 color: Colors.white,

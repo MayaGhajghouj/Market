@@ -24,7 +24,7 @@ Widget SectionsPage({
       centerTitle: true,
       title: Text(
         appbarTitle,
-        style: TextStyle(
+        style: const TextStyle(
           fontFamily: 'Poppins',
           color: salmon,
           fontWeight: FontWeight.bold,
@@ -67,8 +67,8 @@ Widget SectionsPage({
                             Get.toNamed(routing_section1!);
                           },
                           child: Container(
-                            margin: EdgeInsets.all(5.0),
-                            decoration: BoxDecoration(
+                            margin: const EdgeInsets.all(5.0),
+                            decoration: const BoxDecoration(
                               color: salmon,
                               //color: brown_rosy,
                               borderRadius: BorderRadius.all(
@@ -78,7 +78,7 @@ Widget SectionsPage({
                             child: Center(
                               child: Text(
                                 section1,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontFamily: 'League Spartan',
                                   fontWeight: FontWeight.w300,
                                   fontSize: 26,
@@ -109,7 +109,7 @@ Widget SectionsPage({
                             child: Center(
                               child: Text(
                                 section2,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontFamily: 'League Spartan',
                                   fontWeight: FontWeight.w300,
                                   fontSize: 26,
@@ -129,7 +129,7 @@ Widget SectionsPage({
                             Get.toNamed(routing_section3!);
                           },
                           child: Container(
-                            margin: EdgeInsets.all(5.0),
+                            margin: const EdgeInsets.all(5.0),
                             decoration: const BoxDecoration(
                               color: salmon,
                               //color: brown_rosy,
@@ -140,7 +140,7 @@ Widget SectionsPage({
                             child: Center(
                               child: Text(
                                 section3,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontFamily: 'League Spartan',
                                   fontWeight: FontWeight.w300,
                                   fontSize: 26,
@@ -167,7 +167,7 @@ Widget SectionsPage({
                             Get.toNamed(routing_section4!);
                           },
                           child: Container(
-                            margin: EdgeInsets.all(5.0),
+                            margin: const EdgeInsets.all(5.0),
                             decoration: const BoxDecoration(
                               color: salmon,
                               //color: brown_rosy,
@@ -178,7 +178,7 @@ Widget SectionsPage({
                             child: Center(
                               child: Text(
                                 section4,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontFamily: 'League Spartan',
                                   fontWeight: FontWeight.w300,
                                   fontSize: 26,
@@ -198,7 +198,7 @@ Widget SectionsPage({
                             Get.toNamed(routing_section5!);
                           },
                           child: Container(
-                            margin: EdgeInsets.all(5.0),
+                            margin: const EdgeInsets.all(5.0),
                             decoration: const BoxDecoration(
                               color: salmon,
                               //color: brown_rosy,
@@ -209,7 +209,7 @@ Widget SectionsPage({
                             child: Center(
                               child: Text(
                                 section5,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontFamily: 'League Spartan',
                                   fontWeight: FontWeight.w300,
                                   fontSize: 26,
@@ -229,7 +229,7 @@ Widget SectionsPage({
                             Get.toNamed(routing_section6!);
                           },
                           child: Container(
-                            margin: EdgeInsets.all(5.0),
+                            margin: const EdgeInsets.all(5.0),
                             decoration: const BoxDecoration(
                               color: salmon,
                               //color: brown_rosy,
@@ -240,7 +240,7 @@ Widget SectionsPage({
                             child: Center(
                               child: Text(
                                 section6,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontFamily: 'League Spartan',
                                   fontWeight: FontWeight.w300,
                                   fontSize: 26,
@@ -277,7 +277,7 @@ Widget SectionsPage({
                   child: Center(
                     child: Text(
                       section7,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontFamily: 'League Spartan',
                         fontWeight: FontWeight.w300,
                         fontSize: 26,

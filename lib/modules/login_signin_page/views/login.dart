@@ -9,7 +9,7 @@ import '../controllers/google_facebook_login_signup_controller.dart';
 import '../controllers/password&email_login_controller.dart';
 
 class Login extends StatefulWidget {
-  Login({super.key});
+  const Login({super.key});
 
   @override
   State<Login> createState() => _LoginState();

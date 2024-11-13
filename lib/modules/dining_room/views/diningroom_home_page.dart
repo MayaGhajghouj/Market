@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mmarket_interfaces/constants/colors.dart';
-import 'package:mmarket_interfaces/core/app_routers.dart';
 import 'package:mmarket_interfaces/core/app_snackbar.dart';
 import 'package:mmarket_interfaces/core/firebase_services/firestore_products/featch_products.dart';
 import 'package:mmarket_interfaces/core/manage_app_state/app_status.dart';
@@ -40,9 +39,9 @@ class _DiningRoomHomePageState extends State<DiningRoomHomePage> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: salmon,
-                  borderRadius: const BorderRadius.all(
+                  borderRadius: BorderRadius.all(
                     Radius.circular(20.0),
                   ),
                 ),

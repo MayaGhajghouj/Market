@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mmarket_interfaces/widgets_componants/product_description_item.dart';
-
 import '../../models/Product_model.dart';
 
 class ShowProductDescription extends StatefulWidget {
-  ShowProductDescription({
+  const ShowProductDescription({
     super.key,
   });
 
@@ -16,7 +15,6 @@ class ShowProductDescription extends StatefulWidget {
 class _ShowProductDescriptionState extends State<ShowProductDescription> {
   @override
   void initState() {
-    // TODO: Grid Item Tap ➔ Passes ID ➔ ProductDetailsScreen Constructor ➔ fetchProductDetails() ➔ Uses Widget Component for Display
     super.initState();
   }
 

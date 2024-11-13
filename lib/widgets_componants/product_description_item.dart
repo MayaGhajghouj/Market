@@ -44,7 +44,7 @@ Widget ProductDescriptionItem({
             children: [
               TextButton(
                 onPressed: () {},
-                child: Text(
+                child: const Text(
                   'Bed',
                   style: TextStyle(
                     color: salmon,
@@ -59,7 +59,7 @@ Widget ProductDescriptionItem({
               ),
               TextButton(
                 onPressed: () {},
-                child: Text(
+                child: const Text(
                   ' Decorative Light',
                   style: TextStyle(
                     color: salmon,
@@ -74,7 +74,7 @@ Widget ProductDescriptionItem({
               ),
               TextButton(
                 onPressed: () {},
-                child: Text(
+                child: const Text(
                   'Living room',
                   style: TextStyle(
                     color: salmon,
@@ -93,7 +93,7 @@ Widget ProductDescriptionItem({
                 Container(
                   height: 264,
                   width: 315,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(14.0)),
                     color: Beige,
                   ),

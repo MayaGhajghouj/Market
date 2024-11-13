@@ -16,7 +16,7 @@ void AppSnackBar ({required BuildContext context, required String msg }){
         ),
         ),
       backgroundColor: salmon,
-      duration: Duration(seconds: 5),
+      duration: const Duration(seconds: 5),
   ),
   );
 

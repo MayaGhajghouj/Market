@@ -9,7 +9,7 @@ import '../controllers/google_facebook_login_signup_controller.dart';
 import '../controllers/password&email_signup_controller.dart';
 
 class Signup extends StatefulWidget {
-  Signup({super.key});
+  const Signup({super.key});
 
   @override
   State<Signup> createState() => _SignupState();
@@ -18,7 +18,6 @@ class Signup extends StatefulWidget {
 class _SignupState extends State<Signup> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 

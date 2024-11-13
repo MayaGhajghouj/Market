@@ -1,5 +1,3 @@
-import 'package:flutter/foundation.dart';
-
 class ProductModel {
   String productID;
   String category; // diningRoom // livingRoom
