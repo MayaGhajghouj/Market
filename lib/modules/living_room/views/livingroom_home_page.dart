@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mmarket_interfaces/constants/colors.dart';
 import 'package:mmarket_interfaces/core/app_snackbar.dart';
-import 'package:mmarket_interfaces/core/firebase_services/firestore_products/featch_products.dart';
+import 'package:mmarket_interfaces/core/firebase_services/manageProducts/firestore_products.dart';
 import 'package:mmarket_interfaces/core/manage_app_state/app_status.dart';
 import 'package:mmarket_interfaces/widgets_componants/product_list_item.dart';
 
@@ -17,13 +17,16 @@ class _livingroom_HomePageState extends State<livingroom_HomePage> {
   @override
   void initState() {
     super.initState();
-    FirestoreProducts firestoreProducts = Get.put(FirestoreProducts());
-    firestoreProducts.getProductsByCategories(category: 'livingRoom');
+    //   FirestoreProducts firestoreProducts = Get.put(FirestoreProducts());
+    //   firestoreProducts.getProductsByCategories(category: 'livingRoom');
+    //
   }
 
   @override
   Widget build(BuildContext context) {
-    FirestoreProducts firestoreProducts = Get.find();
+    final firestoreProducts = Get.put(FirestoreProducts());
+    firestoreProducts.getProductsByCategories(category: 'livingRoom');
+    //FirestoreProducts firestoreProducts = Get.find();
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -57,7 +60,6 @@ class _livingroom_HomePageState extends State<livingroom_HomePage> {
         padding: const EdgeInsets.all(15.0),
         child: Obx(() {
           var products = firestoreProducts.myProducts;
-          // ignore: unrelated_type_equality_checks
           if (firestoreProducts.appStateController.state == AppState.loading) {
             return const Center(
                 child: CircularProgressIndicator(
@@ -132,10 +134,11 @@ class _livingroom_HomePageState extends State<livingroom_HomePage> {
                     childAspectRatio: 5 / 8,
                   ),
                   itemBuilder: (BuildContext context, int index) {
-                    final product = firestoreProducts.myProducts[index];
                     if (products.isNotEmpty) {
                       print('Success in fetch data');
-                      return ProductLIstItem(productModel: product);
+
+                      return productLIstItem(context,
+                          productModel: products[index]);
                     } else {
                       AppSnackBar(
                           context: context, msg: 'No products available');

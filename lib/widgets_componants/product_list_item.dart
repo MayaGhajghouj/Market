@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mmarket_interfaces/constants/colors.dart';
+import 'package:mmarket_interfaces/core/firebase_services/manageProducts/firestore_products.dart';
 import 'package:mmarket_interfaces/core/helper/image_url.dart';
 import '../core/app_routers.dart';
 import '../models/Product_model.dart';
 
-Widget ProductLIstItem(
-    { required ProductModel productModel
-
-// TODO: onpress for favourit
-// TODO: onpress for add item to card
-    }) {
+Widget productLIstItem(BuildContext context,
+    {required ProductModel productModel}) {
+  FirestoreProducts firestoreProducts = Get.find();
   return GestureDetector(
     onTap: () {
       Get.toNamed(
-     Routes.ShowProductDescription,
-     arguments: productModel,  // Pass the actual ProductModel
-);
+        Routes.ShowProductDescription,
+        arguments: productModel, // Pass the actual ProductModel
+      );
     },
     child: Container(
       // the big frame contain the product like image, and title, price
@@ -100,16 +98,29 @@ Widget ProductLIstItem(
                 children: [
                   IconButton(
                     // fav icon
-                    onPressed: () {},
+                    onPressed: () async {
+                      if (firestoreProducts.likedProducts
+                          .contains(productModel.productID)) {
+                        firestoreProducts.likedProducts
+                            .remove(productModel.productID);
+                      } else {
+                        firestoreProducts.likedProducts
+                            .add(productModel.productID);
+                      }
+                      await firestoreProducts.updateLikedProductsInFirestore();
+                    },
                     icon: Container(
                       decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         color: Terracotta,
                       ),
-                      child: const Padding(
-                        padding: EdgeInsets.all(3.0),
+                      child: Padding(
+                        padding: const EdgeInsets.all(3.0),
                         child: Icon(
-                          Icons.favorite,
+                          firestoreProducts.likedProducts
+                                  .contains(productModel.productID)
+                              ? Icons.favorite
+                              : Icons.favorite_border_outlined,
                           size: 15,
                           color: Colors.white,
                         ),

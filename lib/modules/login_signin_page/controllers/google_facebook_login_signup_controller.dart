@@ -4,6 +4,7 @@ import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:mmarket_interfaces/core/app_routers.dart';
+import 'package:mmarket_interfaces/modules/login_signin_page/controllers/user_controller.dart';
 import '../../../core/manage_app_state/app_state_controller.dart';
 import '../../../models/user_model.dart';
 
@@ -60,7 +61,6 @@ class Google_facebook_LoginSignupControlle extends GetxController {
               email: userCredential.user!.email ?? 'no email',
               phone: 'not register yet',
               birthday: 'not register yet');
-
           print('========== uuser model =====================');
           print('${userModel.value}');
           print('========== uuser model =====================');
@@ -69,6 +69,8 @@ class Google_facebook_LoginSignupControlle extends GetxController {
           appStateController.setSuccess();
         } else {
           // User already exists, navigate to the home screen
+          UserController.setUser(UserModel.fromMap(
+              Value.docs.first.data()! as Map<String, dynamic>));
           Get.toNamed(Routes.WelcomeBackPage);
           appStateController.setSuccess();
         }
@@ -79,6 +81,7 @@ class Google_facebook_LoginSignupControlle extends GetxController {
     }
   }
 
+//==============================================================================================
   /// this function is the logic of facebook auth
   Future<void> signUpSignInWithFacebook() async {
     try {
@@ -98,13 +101,17 @@ class Google_facebook_LoginSignupControlle extends GetxController {
             .signInWithCredential(facebookAuthCredential);
 
         // check if user signup for first time :
-        final userId = await FirebaseFirestore.instance
-            .collection('usersData')
-            .doc(userCredential.user!.uid)
-            .get();
+        CollectionReference usersCollection =
+            FirebaseFirestore.instance.collection('usersData');
 
-        if (!userId.exists) {
-          appStateController.setSuccess();
+        // final userQuery = await FirebaseFirestore.instance
+        //     .collection('usersData')
+        //     .doc('id' userCredential.user!.uid)
+        //     .get();
+        final userQuery = await usersCollection
+            .where('id', isEqualTo: userCredential.user!.uid)
+            .get();
+        if (userQuery.docs.isEmpty) {
           userModel.value = UserModel(
               id: userCredential.user!.uid,
               displayName: userCredential.user!.displayName ?? 'name?',
@@ -113,9 +120,12 @@ class Google_facebook_LoginSignupControlle extends GetxController {
               birthday: 'birthday');
           Get.put(this);
           Get.toNamed(Routes.WelcomeBackPage);
+          appStateController.setSuccess();
         } else {
           appStateController.setSuccess();
           Get.toNamed(Routes.WelcomeBackPage);
+          UserController.setUser(UserModel.fromMap(
+              userQuery.docs.first.data()! as Map<String, dynamic>));
         }
       } else if (loginResult.status == LoginStatus.cancelled) {
         appStateController.setError('facebook authintication cancelled');
@@ -149,7 +159,7 @@ class Google_facebook_LoginSignupControlle extends GetxController {
 
       userModel.value!.phone = phone;
       userModel.value!.birthday = birthday;
-
+      UserController.setUser(userModel.value!);
       await FirebaseFirestore.instance
           .collection('usersData')
           .add(userModel.value!.toMap())

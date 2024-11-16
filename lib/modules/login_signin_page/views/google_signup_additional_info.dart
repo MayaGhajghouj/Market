@@ -106,7 +106,7 @@ class GoogleFacbookSignupAdditionalInfo extends StatelessWidget {
                     },
                     controller: mobileNumber,
                     keyboardtype: TextInputType.emailAddress,
-                    hintext: 'example@example.com',
+                    hintext: '050492495',
                     fontcolor: salmon,
                   ),
                   const SizedBox(

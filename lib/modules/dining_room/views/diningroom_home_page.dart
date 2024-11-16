@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mmarket_interfaces/constants/colors.dart';
 import 'package:mmarket_interfaces/core/app_snackbar.dart';
-import 'package:mmarket_interfaces/core/firebase_services/firestore_products/featch_products.dart';
+import 'package:mmarket_interfaces/core/firebase_services/manageProducts/firestore_products.dart';
 import 'package:mmarket_interfaces/core/manage_app_state/app_status.dart';
 import 'package:mmarket_interfaces/widgets_componants/product_list_item.dart';
 
@@ -17,13 +17,15 @@ class _DiningRoomHomePageState extends State<DiningRoomHomePage> {
   @override
   void initState() {
     super.initState();
-    FirestoreProducts firestoreProducts = Get.put(FirestoreProducts());
-    firestoreProducts.getProductsByCategories(category: 'diningRoom');
+    //   FirestoreProducts firestoreProducts = Get.put(FirestoreProducts());
+    //   firestoreProducts.getProductsByCategories(category: 'diningRoom');
   }
 
   @override
   Widget build(BuildContext context) {
-    FirestoreProducts firestoreProducts = Get.find();
+    FirestoreProducts firestoreProducts = Get.put(FirestoreProducts());
+    firestoreProducts.getProductsByCategories(category: 'diningRoom');
+    // FirestoreProducts firestoreProducts = Get.find();
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -134,14 +136,11 @@ class _DiningRoomHomePageState extends State<DiningRoomHomePage> {
                     crossAxisSpacing: 0.0,
                     childAspectRatio: 5 / 8,
                   ),
-                
                   itemBuilder: (BuildContext context, int index) {
                     final product = firestoreProducts.myProducts[index];
                     if (products.isNotEmpty) {
                       print('Success in fetch data');
-                      return ProductLIstItem(
-                      productModel: product
-                      );
+                      return productLIstItem(context, productModel: product);
                     } else {
                       AppSnackBar(
                           context: context, msg: 'No products available');

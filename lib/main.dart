@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mmarket_interfaces/core/app_routers.dart';
-
+import 'package:mmarket_interfaces/core/firebase_services/manageProducts/firestore_products.dart';
 import 'core/manage_app_state/app_state_controller.dart';
 
 void main() async {
@@ -11,6 +11,7 @@ void main() async {
     await Firebase.initializeApp();
     print('succes in firebase =====================');
     Get.put(AppStateController()); // i will use Get.find if i need in my app
+    Get.put(FirestoreProducts());
   } catch (e) {
     print("Failed to initialize Firebase: $e");
   }
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      initialRoute: Routes.WelcomeBackPage,
+      initialRoute: Routes.Login,
       getPages: AppPages.Pages,
     );
   }

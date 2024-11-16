@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:mmarket_interfaces/core/app_routers.dart';
 import 'package:mmarket_interfaces/core/app_snackbar.dart';
+import 'package:mmarket_interfaces/modules/login_signin_page/controllers/user_controller.dart';
 
 import '../../../core/manage_app_state/app_state_controller.dart';
 import '../../../models/user_model.dart';
@@ -46,6 +47,7 @@ class AuthSignUpController {
           birthday: dateOfBirth,
           password: password,
         );
+        UserController.setUser(userModel);
         // convert the model to map cause to store in the firestore
         // Add a new document with a generated ID
         await _firestore

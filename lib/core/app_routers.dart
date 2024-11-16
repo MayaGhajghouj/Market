@@ -31,6 +31,7 @@ class Routes {
       '/GoogleSignupAdditionalInfo';
 }
 
+
 class AppPages {
   static final Pages = [
      GetPage(
