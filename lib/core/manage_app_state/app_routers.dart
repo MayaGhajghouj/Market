@@ -48,7 +48,7 @@ class AppPages {
     ),
     GetPage(
       name: Routes.livingroom_HomePage,
-      page: () => const livingroom_HomePage(),
+      page: () =>  livingroom_HomePage(),
     ),
     GetPage(
       name: Routes.EditProfile,

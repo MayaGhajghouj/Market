@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mmarket_interfaces/core/constants/colors.dart';
-import 'package:mmarket_interfaces/core/firebase_services/manageProducts/firestore_products.dart';
+import 'package:mmarket_interfaces/core/firebase_services/firestore_products/manage_prodducts.dart';
 import 'package:mmarket_interfaces/core/helper/image_url.dart';
+import 'package:mmarket_interfaces/core/manage_app_state/app_state_controller.dart';
 import '../core/manage_app_state/app_routers.dart';
 import '../models/Product_model.dart';
 
 Widget productLIstItem(BuildContext context,
     {required ProductModel productModel}) {
-  FirestoreProducts firestoreProducts = Get.find();
+  ProductsController firestoreProducts = Get.find();
+  final AppStateController appStateController = Get.find();
   return GestureDetector(
     onTap: () {
       Get.toNamed(
@@ -108,6 +110,7 @@ Widget productLIstItem(BuildContext context,
                             .add(productModel.productID);
                       }
                       await firestoreProducts.updateLikedProductsInFirestore();
+                      appStateController.setSuccess();
                     },
                     icon: Container(
                       decoration: const BoxDecoration(

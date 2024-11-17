@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mmarket_interfaces/core/constants/colors.dart';
 import 'package:mmarket_interfaces/core/app_snackbar.dart';
-import 'package:mmarket_interfaces/core/firebase_services/manageProducts/firestore_products.dart';
+import 'package:mmarket_interfaces/core/firebase_services/firestore_products/manage_prodducts.dart';
 import 'package:mmarket_interfaces/core/manage_app_state/app_status.dart';
 import 'package:mmarket_interfaces/widgets_componants/product_list_item.dart';
 
 class livingroom_HomePage extends StatefulWidget {
-  const livingroom_HomePage({super.key});
+  livingroom_HomePage({super.key});
 
   @override
   State<livingroom_HomePage> createState() => _livingroom_HomePageState();
@@ -17,16 +17,14 @@ class _livingroom_HomePageState extends State<livingroom_HomePage> {
   @override
   void initState() {
     super.initState();
-    //   FirestoreProducts firestoreProducts = Get.put(FirestoreProducts());
-    //   firestoreProducts.getProductsByCategories(category: 'livingRoom');
-    //
+    final ProductsController firestoreProducts = Get.find();
+    firestoreProducts.getProductsByCategories(category: 'livingRoom');
   }
+
+  final ProductsController firestoreProducts = Get.find();
 
   @override
   Widget build(BuildContext context) {
-    final firestoreProducts = Get.put(FirestoreProducts());
-    firestoreProducts.getProductsByCategories(category: 'livingRoom');
-    //FirestoreProducts firestoreProducts = Get.find();
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,

@@ -4,7 +4,7 @@ import 'package:mmarket_interfaces/core/manage_app_state/app_state_controller.da
 import 'package:mmarket_interfaces/models/Product_model.dart';
 import 'package:mmarket_interfaces/modules/login_signup_pages/controllers/user_controller.dart';
 
-class FirestoreProducts extends GetxController {
+class ProductsController extends GetxController {
   final db = FirebaseFirestore.instance;
   final AppStateController appStateController = Get.find();
   // Observable list of products (when i use a realtime properties )
@@ -40,7 +40,7 @@ class FirestoreProducts extends GetxController {
   /// this function to manage the favourit products process
   Future<void> updateLikedProductsInFirestore() async {
     try {
-      appStateController.startLoading();
+      //   appStateController.startLoading();
       if (user != null) {
         final userDoc = await FirebaseFirestore.instance
             .collection('usersData')
@@ -49,10 +49,11 @@ class FirestoreProducts extends GetxController {
           'likedProducts': likedProducts,
         });
 
-        appStateController.setSuccess();
+        // appStateController.setSuccess();
       }
     } catch (e) {
       appStateController.setError('error in press like button');
+      print('================ eroror  like  button  $e   \n');
     }
   }
 }
