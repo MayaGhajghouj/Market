@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mmarket_interfaces/core/manage_app_state/app_state_controller.dart';
-import '../../../constants/colors.dart';
+import '../../../core/constants/colors.dart';
 import '../../../core/app_snackbar.dart';
 import '../../../core/manage_app_state/app_status.dart';
 import '../../../widgets_componants/formdata.dart';

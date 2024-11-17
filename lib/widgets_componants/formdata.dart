@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 
-import '../constants/colors.dart';
+import '../core/constants/colors.dart';
 
 Widget FormDataitem({
   required TextEditingController controller,

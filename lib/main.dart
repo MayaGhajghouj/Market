@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mmarket_interfaces/core/app_routers.dart';
+import 'package:mmarket_interfaces/core/manage_app_state/app_routers.dart';
 import 'package:mmarket_interfaces/core/firebase_services/manageProducts/firestore_products.dart';
 import 'core/manage_app_state/app_state_controller.dart';
 
@@ -9,21 +9,14 @@ void main() async {
   try {
     WidgetsFlutterBinding.ensureInitialized();
     await Firebase.initializeApp();
-    print('succes in firebase =====================');
+    print('succes connect with firebase =====================');
     Get.put(AppStateController()); // i will use Get.find if i need in my app
-    Get.put(FirestoreProducts());
+    // Get.put(FirestoreProducts());
   } catch (e) {
     print("Failed to initialize Firebase: $e");
   }
   runApp(const MyApp());
 }
-/*
-* WidgetsFlutterBinding.ensureInitialized();
-await Firebase.initializeApp(
-  options: DefaultFirebaseOptions.currentPlatform,
-);
-runApp(const MyApp());
-* */
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

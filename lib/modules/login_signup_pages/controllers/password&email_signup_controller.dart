@@ -2,9 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:mmarket_interfaces/core/app_routers.dart';
+import 'package:mmarket_interfaces/core/manage_app_state/app_routers.dart';
 import 'package:mmarket_interfaces/core/app_snackbar.dart';
-import 'package:mmarket_interfaces/modules/login_signin_page/controllers/user_controller.dart';
+import 'package:mmarket_interfaces/modules/login_signup_pages/controllers/user_controller.dart';
 
 import '../../../core/manage_app_state/app_state_controller.dart';
 import '../../../models/user_model.dart';
@@ -30,7 +30,7 @@ class AuthSignUpController {
         password: password,
       );
       // the process above just take the email and password and store it in the User obj
-      // but all aditional values still want to gfill it because they take null value
+      // but all aditional values still want to fill it because they take null value
 
       User? user = credentalUser.user;
       print('\n====== $user ========\n');

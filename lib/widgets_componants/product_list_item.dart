@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mmarket_interfaces/constants/colors.dart';
+import 'package:mmarket_interfaces/core/constants/colors.dart';
 import 'package:mmarket_interfaces/core/firebase_services/manageProducts/firestore_products.dart';
 import 'package:mmarket_interfaces/core/helper/image_url.dart';
-import '../core/app_routers.dart';
+import '../core/manage_app_state/app_routers.dart';
 import '../models/Product_model.dart';
 
 Widget productLIstItem(BuildContext context,

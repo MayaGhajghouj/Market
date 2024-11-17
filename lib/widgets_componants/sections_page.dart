@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../constants/colors.dart';
+import '../core/constants/colors.dart';
 
 Widget SectionsPage({
   required String appbarTitle,

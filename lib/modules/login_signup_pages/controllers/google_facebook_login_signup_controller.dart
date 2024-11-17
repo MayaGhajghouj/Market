@@ -3,8 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:mmarket_interfaces/core/app_routers.dart';
-import 'package:mmarket_interfaces/modules/login_signin_page/controllers/user_controller.dart';
+import 'package:mmarket_interfaces/core/manage_app_state/app_routers.dart';
+import 'package:mmarket_interfaces/modules/login_signup_pages/controllers/user_controller.dart';
 import '../../../core/manage_app_state/app_state_controller.dart';
 import '../../../models/user_model.dart';
 

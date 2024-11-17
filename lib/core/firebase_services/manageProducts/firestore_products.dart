@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:mmarket_interfaces/core/manage_app_state/app_state_controller.dart';
 import 'package:mmarket_interfaces/models/Product_model.dart';
-import 'package:mmarket_interfaces/modules/login_signin_page/controllers/user_controller.dart';
+import 'package:mmarket_interfaces/modules/login_signup_pages/controllers/user_controller.dart';
 
 class FirestoreProducts extends GetxController {
   final db = FirebaseFirestore.instance;

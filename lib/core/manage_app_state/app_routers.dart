@@ -4,15 +4,15 @@ import 'package:mmarket_interfaces/modules/dining_room/views/diningroom_home_pag
 import 'package:mmarket_interfaces/modules/dining_room/views/sections_diningroom.dart';
 import 'package:mmarket_interfaces/modules/living_room/views/sections_livingroom.dart';
 import 'package:mmarket_interfaces/modules/living_room/views/livingroom_home_page.dart';
-import 'package:mmarket_interfaces/modules/login_signin_page/views/login.dart';
-import 'package:mmarket_interfaces/modules/login_signin_page/views/signup.dart';
+import 'package:mmarket_interfaces/modules/login_signup_pages/views/login.dart';
+import 'package:mmarket_interfaces/modules/login_signup_pages/views/signup.dart';
 import 'package:mmarket_interfaces/modules/profile_pages/views/my_orders.dart';
 import 'package:mmarket_interfaces/modules/profile_pages/views/edit_profile.dart';
 import 'package:mmarket_interfaces/modules/profile_pages/views/profile.dart';
 import 'package:mmarket_interfaces/modules/reviewpage/views/review_page.dart';
 import 'package:mmarket_interfaces/modules/welcomebackpage/views/welcome_back_page.dart';
 
-import '../modules/login_signin_page/views/google_signup_additional_info.dart';
+import '../../modules/login_signup_pages/views/google_signup_additional_info.dart';
 
 class Routes {
   static const ShowProductDescription = '/ShowProductDescription';

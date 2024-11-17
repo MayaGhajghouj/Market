@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 
-import '../constants/colors.dart';
+import 'constants/colors.dart';
 
 void AppSnackBar ({required BuildContext context, required String msg }){
 

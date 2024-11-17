@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
-import 'package:mmarket_interfaces/core/app_routers.dart';
+import 'package:mmarket_interfaces/core/manage_app_state/app_routers.dart';
 import 'package:mmarket_interfaces/core/manage_app_state/app_state_controller.dart';
 import 'package:mmarket_interfaces/core/app_snackbar.dart';
 import 'package:mmarket_interfaces/models/user_model.dart';
-import 'package:mmarket_interfaces/modules/login_signin_page/controllers/user_controller.dart';
+import 'package:mmarket_interfaces/modules/login_signup_pages/controllers/user_controller.dart';
 
 import '../widget_componants/show_alert_dialog.dart';
 

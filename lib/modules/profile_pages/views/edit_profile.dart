@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mmarket_interfaces/constants/colors.dart';
+import 'package:mmarket_interfaces/core/constants/colors.dart';
 
 
 class EditProfile extends StatelessWidget {
