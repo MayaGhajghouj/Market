@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mmarket_interfaces/core/constants/colors.dart';
-import 'package:mmarket_interfaces/core/firebase_services/firestore_products/manage_prodducts.dart';
+import 'package:mmarket_interfaces/core/firebase_services/firestore_products/product_controller.dart';
 import 'package:mmarket_interfaces/core/helper/image_url.dart';
 import 'package:mmarket_interfaces/core/manage_app_state/app_state_controller.dart';
 import '../core/manage_app_state/app_routers.dart';
@@ -101,12 +101,12 @@ Widget productLIstItem(BuildContext context,
                   IconButton(
                     // fav icon
                     onPressed: () async {
-                      if (firestoreProducts.likedProducts
+                      if (firestoreProducts.userLikedProducts
                           .contains(productModel.productID)) {
-                        firestoreProducts.likedProducts
+                        firestoreProducts.userLikedProducts
                             .remove(productModel.productID);
                       } else {
-                        firestoreProducts.likedProducts
+                        firestoreProducts.userLikedProducts
                             .add(productModel.productID);
                       }
                       await firestoreProducts.updateLikedProductsInFirestore();
@@ -120,7 +120,7 @@ Widget productLIstItem(BuildContext context,
                       child: Padding(
                         padding: const EdgeInsets.all(3.0),
                         child: Icon(
-                          firestoreProducts.likedProducts
+                          firestoreProducts.userLikedProducts
                                   .contains(productModel.productID)
                               ? Icons.favorite
                               : Icons.favorite_border_outlined,

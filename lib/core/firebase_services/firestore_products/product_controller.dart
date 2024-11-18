@@ -11,7 +11,14 @@ class ProductsController extends GetxController {
   final RxList<ProductModel> myProducts = <ProductModel>[].obs;
   final user = UserController.getUser();
   // Observable list of liked products
-  RxList<String> likedProducts = <String>[].obs;
+  RxList<String> userLikedProducts = <String>[].obs;
+
+  ProductsController()
+    {
+      userLikedProducts.value=user!.likedProducts ;
+      
+    }
+  
 
   /// Get products by the name of category  // livingRoom // diningRoom in real time
   void getProductsByCategories({required String category}) {
@@ -46,7 +53,7 @@ class ProductsController extends GetxController {
             .collection('usersData')
             .doc(user!.id);
         await userDoc.update({
-          'likedProducts': likedProducts,
+          'likedProducts': userLikedProducts,
         });
 
         // appStateController.setSuccess();

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mmarket_interfaces/core/constants/colors.dart';
+import 'package:mmarket_interfaces/core/firebase_services/firestore_products/product_controller.dart';
 import 'package:mmarket_interfaces/core/manage_app_state/app_routers.dart';
 
 class WelcomeBackPage extends StatefulWidget {
@@ -14,6 +15,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
   @override
   void initState() {
     super.initState();
+    Get.put(ProductsController());
   }
 
   @override

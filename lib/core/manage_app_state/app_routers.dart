@@ -38,10 +38,10 @@ class AppPages {
       name: Routes.ShowProductDescription,
       page: () => ShowProductDescription(),
     ),
-    GetPage(
-      name: Routes.DiningRoomHomePage,
-      page: () => DiningRoomHomePage(),
-    ),
+    // GetPage(
+    //   name: Routes.DiningRoomHomePage,
+    //   page: () => DiningRoomHomePage(),
+    // ),
     GetPage(
       name: Routes.SectionsLivingroom,
       page: () => const SectionsLivingroom(),
