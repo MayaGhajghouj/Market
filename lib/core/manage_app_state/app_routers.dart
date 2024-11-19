@@ -1,7 +1,10 @@
 import 'package:get/get.dart';
+import 'package:mmarket_interfaces/core/firebase_services/firestore_products/product_controller.dart';
+import 'package:mmarket_interfaces/core/helper/app_binding.dart';
 import 'package:mmarket_interfaces/modules/ShowProductDescription/show_product_description.dart';
 import 'package:mmarket_interfaces/modules/dining_room/views/diningroom_home_page.dart';
 import 'package:mmarket_interfaces/modules/dining_room/views/sections_diningroom.dart';
+import 'package:mmarket_interfaces/modules/living_room/views/livingroompage.dart';
 import 'package:mmarket_interfaces/modules/living_room/views/sections_livingroom.dart';
 import 'package:mmarket_interfaces/modules/living_room/views/livingroom_home_page.dart';
 import 'package:mmarket_interfaces/modules/login_signup_pages/views/login.dart';
@@ -31,24 +34,24 @@ class Routes {
       '/GoogleSignupAdditionalInfo';
 }
 
-
 class AppPages {
   static final Pages = [
-     GetPage(
+    GetPage(
       name: Routes.ShowProductDescription,
       page: () => ShowProductDescription(),
     ),
-    // GetPage(
-    //   name: Routes.DiningRoomHomePage,
-    //   page: () => DiningRoomHomePage(),
-    // ),
+    GetPage(
+      name: Routes.DiningRoomHomePage,
+      page: () => DiningRoomHomePage(),
+    ),
     GetPage(
       name: Routes.SectionsLivingroom,
       page: () => const SectionsLivingroom(),
     ),
     GetPage(
       name: Routes.livingroom_HomePage,
-      page: () =>  livingroom_HomePage(),
+      //  page: () => livingroom_HomePage(),
+      page: () => Livingroompage(),
     ),
     GetPage(
       name: Routes.EditProfile,
@@ -69,6 +72,7 @@ class AppPages {
     GetPage(
       name: Routes.WelcomeBackPage,
       page: () => const WelcomeBackPage(),
+      binding: AppBinding(),
     ),
     GetPage(
       name: Routes.SectionsDiningroom,

@@ -5,7 +5,7 @@ import 'package:mmarket_interfaces/core/firebase_services/firestore_products/pro
 class AppBinding implements Bindings {
   @override
   void dependencies() {
-    Get.put<ProductsController>(ProductsController());
+   // Get.put<ProductsController>(ProductsController());
    // Get.put<AppStateController>(AppStateController());
   }
 }

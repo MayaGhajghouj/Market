@@ -15,7 +15,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
   @override
   void initState() {
     super.initState();
-    Get.put(ProductsController());
+   // Get.put(ProductsController());
   }
 
   @override

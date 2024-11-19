@@ -9,7 +9,7 @@ import '../models/Product_model.dart';
 
 Widget productLIstItem(BuildContext context,
     {required ProductModel productModel}) {
-  ProductsController firestoreProducts = Get.find();
+  ProductsController productsController = Get.find();
   final AppStateController appStateController = Get.find();
   return GestureDetector(
     onTap: () {
@@ -101,15 +101,15 @@ Widget productLIstItem(BuildContext context,
                   IconButton(
                     // fav icon
                     onPressed: () async {
-                      if (firestoreProducts.userLikedProducts
+                      if (productsController.userLikedProducts
                           .contains(productModel.productID)) {
-                        firestoreProducts.userLikedProducts
+                        productsController.userLikedProducts
                             .remove(productModel.productID);
                       } else {
-                        firestoreProducts.userLikedProducts
+                        productsController.userLikedProducts
                             .add(productModel.productID);
                       }
-                      await firestoreProducts.updateLikedProductsInFirestore();
+                      await productsController.updateLikedProductsInFirestore();
                       appStateController.setSuccess();
                     },
                     icon: Container(
@@ -120,7 +120,7 @@ Widget productLIstItem(BuildContext context,
                       child: Padding(
                         padding: const EdgeInsets.all(3.0),
                         child: Icon(
-                          firestoreProducts.userLikedProducts
+                          productsController.userLikedProducts
                                   .contains(productModel.productID)
                               ? Icons.favorite
                               : Icons.favorite_border_outlined,
