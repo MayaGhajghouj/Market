@@ -8,7 +8,9 @@ import '../core/manage_app_state/app_routers.dart';
 import '../models/Product_model.dart';
 
 Widget productLIstItem(BuildContext context,
-    {required ProductModel productModel}) {
+    {required ProductModel productModel}) 
+    
+    {
   ProductsController productsController = Get.find();
   final AppStateController appStateController = Get.find();
   return GestureDetector(
@@ -101,7 +103,7 @@ Widget productLIstItem(BuildContext context,
                   IconButton(
                     // fav icon
                     onPressed: () async {
-                      if (productsController.userLikedProducts
+                      if (productsController.userLikedProducts.value
                           .contains(productModel.productID)) {
                         productsController.userLikedProducts
                             .remove(productModel.productID);
@@ -110,7 +112,7 @@ Widget productLIstItem(BuildContext context,
                             .add(productModel.productID);
                       }
                       await productsController.updateLikedProductsInFirestore();
-                      appStateController.setSuccess();
+                    //  appStateController.setSuccess();
                     },
                     icon: Container(
                       decoration: const BoxDecoration(
