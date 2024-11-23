@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mmarket_interfaces/core/constants/colors.dart';
-import 'package:mmarket_interfaces/core/app_snackbar.dart';
 import 'package:mmarket_interfaces/core/firebase_services/firestore_products/product_controller.dart';
-import 'package:mmarket_interfaces/core/manage_app_state/app_status.dart';
+import 'package:mmarket_interfaces/models/Product_model.dart';
+import 'package:mmarket_interfaces/modules/living_room/controllers/livingroom_controller.dart';
 import 'package:mmarket_interfaces/widgets_componants/product_list_item.dart';
 
-class DiningRoomHomePage extends StatelessWidget {
-  DiningRoomHomePage({super.key});
-
-  final ProductsController firestoreProducts = Get.find()
-    ..getProductsByCategories(category: 'diningRoom');
-
+class Livingroompage extends StatelessWidget {
+  Livingroompage({super.key});
+  final ProductsController productsController = Get.put(ProductsController());
+  final LivingRoomController controller = Get.put(LivingRoomController());
+  //final AppStateController _appStateController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: const Text(
-          'Dining Table',
+          'Sofa',
           style: TextStyle(
             fontFamily: 'Poppins',
             color: salmon,
@@ -43,32 +42,56 @@ class DiningRoomHomePage extends StatelessWidget {
         ],
         backgroundColor: Beige,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Obx(() {
-          var products = firestoreProducts.myProducts;
-          // ignore: unrelated_type_equality_checks
-          if (firestoreProducts.appStateController.state == AppState.loading) {
+      body: StreamBuilder(
+        stream: controller.firebaseFirestore
+            .collection('Products')
+            .where('category', isEqualTo: 'livingRoom')
+            .snapshots(),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: const Text(
+                      'Error !!!!',
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                        color: Terracotta,
+                      ),
+                    ),
+                    content: Text('${snapshot.error}'),
+                  );
+                });
+          }
+          if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
-                child: CircularProgressIndicator(
-              color: salmon,
-              backgroundColor: Terracotta,
-            ));
+              child: CircularProgressIndicator(
+                backgroundColor: salmon,
+                color: Terracotta,
+              ),
+            );
           }
-          if (firestoreProducts.appStateController.state == AppState.error) {
-            WidgetsBinding.instance.addPostFrameCallback((_) {
-              AppSnackBar(
-                  context: context,
-                  msg:
-                      firestoreProducts.appStateController.errorMsg.toString());
-            });
+          if (snapshot.data!.docs.isEmpty) {
+            showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return const AlertDialog(
+                    title: Text(
+                      'No Data Founded !!!!',
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                        color: Terracotta,
+                      ),
+                    ),
+                  );
+                });
           }
-
           return Column(
-            mainAxisSize: MainAxisSize.max,
             children: [
               Row(
-                // this row is in the above of screen
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   TextButton(
@@ -117,7 +140,7 @@ class DiningRoomHomePage extends StatelessWidget {
               ),
               Expanded(
                 child: GridView.builder(
-                  itemCount: products.length,
+                  itemCount: snapshot.data!.docs.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     mainAxisSpacing: 0.0,
@@ -125,22 +148,19 @@ class DiningRoomHomePage extends StatelessWidget {
                     childAspectRatio: 5 / 8,
                   ),
                   itemBuilder: (BuildContext context, int index) {
-                    final product = firestoreProducts.myProducts[index];
-                    if (products.isNotEmpty) {
-                      print('Success in fetch data');
-                      return productLIstItem(context, productModel: product);
-                    } else {
-                      AppSnackBar(
-                          context: context, msg: 'No products available');
-                      print('faild in fetch data');
-                      return null;
-                    }
+                    List<ProductModel> products = snapshot.data!.docs
+                        .map((doc) => ProductModel.fromMap(doc.data()))
+                        .toList();
+
+                    //   Map product = snapshot.data!.docs.first.data();
+                    return productLIstItem(context,
+                        productModel: products[index]);
                   },
                 ),
               ),
             ],
           );
-        }),
+        },
       ),
     );
   }

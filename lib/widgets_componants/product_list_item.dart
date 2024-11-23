@@ -14,7 +14,7 @@ Widget productLIstItem(BuildContext context,
   return GestureDetector(
     onTap: () {
       Get.toNamed(
-        Routes.ShowProductDescription,
+        Routes.showProductDescription,
         arguments: productModel, // Pass the actual ProductModel
       );
     },

@@ -1,25 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/get_instance.dart';
 import 'package:mmarket_interfaces/core/constants/colors.dart';
-import 'package:mmarket_interfaces/core/app_snackbar.dart';
 import 'package:mmarket_interfaces/core/firebase_services/firestore_products/product_controller.dart';
-import 'package:mmarket_interfaces/core/manage_app_state/app_status.dart';
-import 'package:mmarket_interfaces/widgets_componants/product_list_item.dart';
+import 'package:mmarket_interfaces/modules/dining_room/controllers/diningroom_controller.dart';
 
-class livingroom_HomePage extends StatelessWidget {
-  livingroom_HomePage({super.key});
+import '../../../models/Product_model.dart';
+import '../../../widgets_componants/product_list_item.dart';
 
-  final ProductsController firestoreProducts = Get.find()
-    ..getProductsByCategories(category: 'livingRoom');
+class DiningroomScreen extends StatelessWidget {
+  //diningRoom
+  DiningroomScreen({super.key});
+
+  final ProductsController productsController = Get.put(ProductsController());
+  final DiningroomController controller = Get.put(DiningroomController());
 
   @override
-  Widget build(BuildContext context)
-   {
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: const Text(
-          'Sofa',
+          'Dining Table',
           style: TextStyle(
             fontFamily: 'Poppins',
             color: salmon,
@@ -44,24 +46,52 @@ class livingroom_HomePage extends StatelessWidget {
         ],
         backgroundColor: Beige,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Obx(() {
-          var products = firestoreProducts.myProducts;
-          if (firestoreProducts.appStateController.state == AppState.loading) {
-            return const Center(
-                child: CircularProgressIndicator(
-              color: salmon,
-              backgroundColor: Terracotta,
-            ));
+      body: StreamBuilder(
+        stream: controller.firebaseFirestore
+            .collection('Products')
+            .where('category', isEqualTo: 'diningRoom')
+            .snapshots(),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: const Text(
+                      'Error !!!!',
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                        color: Terracotta,
+                      ),
+                    ),
+                    content: Text('${snapshot.error}'),
+                  );
+                });
           }
-          if (firestoreProducts.appStateController.state == AppState.error) {
-            WidgetsBinding.instance.addPostFrameCallback((_) {
-              AppSnackBar(
-                  context: context,
-                  msg:
-                      firestoreProducts.appStateController.errorMsg.toString());
-            });
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+              child: CircularProgressIndicator(
+                backgroundColor: salmon,
+                color: Terracotta,
+              ),
+            );
+          }
+          if (snapshot.data!.docs.isEmpty) {
+            showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return const AlertDialog(
+                    title: Text(
+                      'No Data Founded !!!!',
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                        color: Terracotta,
+                      ),
+                    ),
+                  );
+                });
           }
           return Column(
             children: [
@@ -114,7 +144,7 @@ class livingroom_HomePage extends StatelessWidget {
               ),
               Expanded(
                 child: GridView.builder(
-                  itemCount: products.length,
+                  itemCount: snapshot.data!.docs.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     mainAxisSpacing: 0.0,
@@ -122,23 +152,19 @@ class livingroom_HomePage extends StatelessWidget {
                     childAspectRatio: 5 / 8,
                   ),
                   itemBuilder: (BuildContext context, int index) {
-                    if (products.isNotEmpty) {
-                      print('Success in fetch data');
+                    List<ProductModel> products = snapshot.data!.docs
+                        .map((doc) => ProductModel.fromMap(doc.data()))
+                        .toList();
 
-                      return productLIstItem(context,
-                          productModel: products[index]);
-                    } else {
-                      AppSnackBar(
-                          context: context, msg: 'No products available');
-                      print('faild in fetch data');
-                      return null;
-                    }
+                    //   Map product = snapshot.data!.docs.first.data();
+                    return productLIstItem(context,
+                        productModel: products[index]);
                   },
                 ),
               ),
             ],
           );
-        }),
+        },
       ),
     );
   }

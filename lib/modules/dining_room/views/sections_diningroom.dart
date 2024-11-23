@@ -14,7 +14,7 @@ class SectionsDiningroom extends StatelessWidget {
         section1: 'Chairs',
         section2: 'Storage',
         section3: 'Dining Tables',
-        routing_section3:Routes.DiningRoomHomePage,
+        routing_section3:Routes.diningRoomHomePage,
         section4: 'Tables',
         section5: 'Decorative Light',
         section6: 'Decor',);

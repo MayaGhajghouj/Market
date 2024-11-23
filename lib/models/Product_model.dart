@@ -40,9 +40,4 @@ class ProductModel {
       productPrice: double.parse(myMap['productPrice'] ?? '0.0'),
     );
   }
-
-// fromFirestore: (snapshot, options) => {
-//         const data = snapshot.data(options);
-//         return new City(data.name, data.state, data.country);
-//     }
 }
